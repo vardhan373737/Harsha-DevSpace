@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Portfolio | Coding Tiger</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+    --bg:#f7f2e8;
+    --surface:#fffaf0;
+    --ink:#1f1a14;
+    --muted:#6e6253;
+    --accent:#b88846;
+    --accent-deep:#8f6632;
+    --line:rgba(143,102,50,0.22);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Plus Jakarta Sans',sans-serif;
+    background:radial-gradient(circle at 10% 12%,#fff8eb 0,#f5ecdd 38%,#f1e5d2 100%);
+    color:var(--ink);
+    overflow-x:hidden;
+    min-height:100vh;
+}
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    z-index:-1;
+    border-radius:50%;
+    filter:blur(2px);
+}
+
+body::before{
+    width:430px;
+    height:430px;
+    top:-130px;
+    right:-110px;
+    background:radial-gradient(circle,#f0d3a6 0,#e9c186 46%,transparent 72%);
+    animation:drift 9s ease-in-out infinite alternate;
+}
+
+body::after{
+    width:360px;
+    height:360px;
+    bottom:-150px;
+    left:-120px;
+    background:radial-gradient(circle,#d6ae75 0,#c49356 48%,transparent 72%);
+    animation:drift 8s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes drift{
+    from{transform:translate(0,0) scale(1);}
+    to{transform:translate(26px,-18px) scale(1.06);}
+}
+
+.page-shell{
+    width:min(1180px,92%);
+    margin:22px auto;
+    border:1px solid var(--line);
+    border-radius:28px;
+    background:linear-gradient(140deg,rgba(255,250,240,0.95),rgba(252,245,233,0.9));
+    box-shadow:0 25px 60px rgba(91,67,35,0.18);
+    backdrop-filter:blur(8px);
+    overflow:hidden;
+}
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:22px 48px;
+    border-bottom:1px solid var(--line);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.logo img{
+    width:56px;
+    height:56px;
+    border-radius:16px;
+    object-fit:cover;
+    border:1px solid var(--line);
+}
+
+.logo h2{
+    font-size:1.08rem;
+    letter-spacing:0.11em;
+    text-transform:uppercase;
+    font-weight:700;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:22px;
+}
+
+nav a{
+    text-decoration:none;
+    color:var(--ink);
+    font-size:0.93rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-weight:600;
+    position:relative;
+}
+
+nav a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-5px;
+    width:0;
+    height:2px;
+    background:var(--accent);
+    transition:width 0.3s ease;
+}
+
+nav a:hover::after,
+nav a.active::after{
+    width:100%;
+}
+
+.hero{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:40px;
+    align-items:center;
+    padding:58px 48px 64px;
+}
+
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    color:var(--muted);
+}
+
+.eyebrow::before{
+    content:"";
+    width:24px;
+    height:1px;
+    background:var(--muted);
+}
+
+.hero-text h1{
+    margin-top:14px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(2.5rem,4.8vw,4.3rem);
+    line-height:1.03;
+    letter-spacing:0.01em;
+    min-height:1.1em;
+}
+
+.cursor{
+    display:inline-block;
+    width:3px;
+    height:0.9em;
+    background:var(--accent);
+    margin-left:6px;
+    animation:blink 0.8s infinite;
+    vertical-align:baseline;
+}
+
+@keyframes blink{
+    0%,100%{opacity:1;}
+    50%{opacity:0;}
+}
+
+.underline{
+    width:130px;
+    height:2px;
+    background:linear-gradient(to right,var(--accent),transparent);
+    margin:18px 0 24px;
+}
+
+.hero-text h3{
+    font-size:1.3rem;
+    font-weight:600;
+    margin-bottom:16px;
+}
+
+.hero-text h3 span{
+    color:var(--accent-deep);
+}
+
+.hero-text p{
+    font-size:1.03rem;
+    color:var(--muted);
+    line-height:1.9;
+    max-width:580px;
+    margin-bottom:30px;
+}
+
+.actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-bottom:28px;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:13px 28px;
+    text-decoration:none;
+    border-radius:999px;
+    font-weight:700;
+    letter-spacing:0.04em;
+    transition:transform 0.25s ease,box-shadow 0.25s ease,background 0.25s ease;
+}
+
+.btn-primary{
+    background:linear-gradient(125deg,var(--accent),#a67635);
+    color:#fffdf9;
+    box-shadow:0 12px 24px rgba(167,116,52,0.32);
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 16px 28px rgba(167,116,52,0.35);
+}
+
+.btn-ghost{
+    border:1px solid var(--line);
+    color:var(--ink);
+    background:rgba(255,255,255,0.45);
+}
+
+.btn-ghost:hover{
+    transform:translateY(-3px);
+    background:rgba(255,255,255,0.72);
+}
+
+.social-icons{
+    display:flex;
+    gap:12px;
+}
+
+.social-icons a{
+    display:grid;
+    place-items:center;
+    width:42px;
+    height:42px;
+    border:1px solid var(--line);
+    border-radius:50%;
+    color:var(--accent-deep);
+    text-decoration:none;
+    background:rgba(255,255,255,0.66);
+    transition:transform 0.2s ease,background 0.2s ease,color 0.2s ease;
+}
+
+.social-icons a:hover{
+    transform:translateY(-2px);
+    background:var(--accent);
+    color:white;
+}
+
+.hero-image-wrap{
+    display:flex;
+    justify-content:center;
+}
+
+.hero-image{
+    position:relative;
+    width:min(420px,100%);
+    aspect-ratio:1/1;
+    border-radius:36px;
+    border:1px solid rgba(184,136,70,0.28);
+    padding:16px;
+    background:linear-gradient(155deg,rgba(255,255,255,0.5),rgba(239,219,184,0.62));
+    box-shadow:0 25px 40px rgba(132,95,48,0.2);
+    animation:floatCard 5s ease-in-out infinite;
+}
+
+.hero-image::before{
+    content:"";
+    position:absolute;
+    inset:12px;
+    border-radius:26px;
+    border:1px solid rgba(255,255,255,0.75);
+    pointer-events:none;
+}
+
+.hero-image img{
+    width:100%;
+    height:100%;
+    border-radius:24px;
+    object-fit:cover;
+    object-position:center;
+}
+
+@keyframes floatCard{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-8px);}
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:14px;
+    margin-top:28px;
+}
+
+.stat-card{
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:14px 16px;
+    background:rgba(255,255,255,0.55);
+}
+
+.stat-card h4{
+    font-size:1.5rem;
+    font-family:'Cormorant Garamond',serif;
+    color:var(--accent-deep);
+    margin-bottom:4px;
+}
+
+.stat-card p{
+    margin:0;
+    font-size:0.82rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+    line-height:1.5;
+}
+
+@media(max-width:1060px){
+    .hero{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    .hero-image-wrap{
+        order:-1;
+    }
+
+    .hero-text{
+        text-align:center;
+    }
+
+    .eyebrow,
+    .actions,
+    .social-icons,
+    .underline{
+        justify-content:center;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-text p{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .eyebrow::before{
+        display:none;
+    }
+}
+
+@media(max-width:720px){
+    .page-shell{
+        width:94%;
+        margin:14px auto;
+        border-radius:22px;
+    }
+
+    header{
+        flex-direction:column;
+        gap:16px;
+        padding:18px 18px;
+    }
+
+    nav{
+        justify-content:center;
+        gap:14px;
+    }
+
+    nav a{
+        font-size:0.78rem;
+    }
+
+    .hero{
+        padding:26px 18px 30px;
+    }
+
+    .hero-text h3{
+        font-size:1.04rem;
+    }
+
+    .hero-text p{
+        font-size:0.95rem;
+        line-height:1.72;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="page-shell">
+    <header>
+        <div class="logo">
+            <img src="profile.jpeg" alt="logo">
+            <h2>Harsha DevSpace</h2>
+        </div>
+
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="Services.html">Services</a>
+            <a href="About.html">About</a>
+            <a href="Projects.html">Projects</a>
+            <a href="certificates.html">Certificates</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <span class="eyebrow">Portfolio 2026</span>
+
+            <h1>
+                <span id="typing-title"></span>
+                <span class="cursor"></span>
+            </h1>
+
+            <div class="underline"></div>
+
+            <h3>
+                I am <span id="typing-name"></span>
+            </h3>
+
+            <p>
+            I am a dedicated Computer Science Engineering student passionate about
+            full-stack development, building scalable applications, and creating
+            impactful digital solutions using modern technologies.
+            </p>
+
+            <div class="actions">
+                <a href="#" class="btn btn-primary"><i class="fa-solid fa-file-arrow-down"></i> Download CV</a>
+                <a href="Projects.html" class="btn btn-ghost"><i class="fa-solid fa-arrow-right"></i> View Projects</a>
+            </div>
+
+            <div class="social-icons">
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <h4>15+</h4>
+                    <p>Projects Built</p>
+                </div>
+                <div class="stat-card">
+                    <h4>8+</h4>
+                    <p>Tech Stacks Used</p>
+                </div>
+                <div class="stat-card">
+                    <h4>100%</h4>
+                    <p>Delivery Focus</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-image-wrap">
+            <div class="hero-image">
+                <img src="profile.jpeg" alt="profile">
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+const titleText = "Full Stack Developer";
+const nameText = "KODIGANTI HARSHAVARDHAN";
+
+let titleIndex = 0;
+let nameIndex = 0;
+
+function typeTitle(){
+    if(titleIndex < titleText.length){
+        document.getElementById("typing-title").innerHTML += titleText.charAt(titleIndex);
+        titleIndex++;
+        setTimeout(typeTitle,100);
+    } else {
+        setTimeout(typeName,500);
+    }
+}
+
+function typeName(){
+    if(nameIndex < nameText.length){
+        document.getElementById("typing-name").innerHTML += nameText.charAt(nameIndex);
+        nameIndex++;
+        setTimeout(typeName,80);
+    }
+}
+
+window.onload = function(){
+    typeTitle();
+};
+</script>
+
+</body>
+</html>

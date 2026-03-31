@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harsha DevSpace | Projects</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+    --bg:#f7f2e8;
+    --surface:#fffaf0;
+    --ink:#1f1a14;
+    --muted:#6e6253;
+    --accent:#b88846;
+    --accent-deep:#8f6632;
+    --line:rgba(143,102,50,0.22);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Plus Jakarta Sans',sans-serif;
+    color:var(--ink);
+    min-height:100vh;
+    background:radial-gradient(circle at 10% 12%,#fff8eb 0,#f5ecdd 38%,#f1e5d2 100%);
+    overflow-x:hidden;
+}
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    z-index:-1;
+    border-radius:50%;
+}
+
+body::before{
+    width:430px;
+    height:430px;
+    top:-130px;
+    right:-110px;
+    background:radial-gradient(circle,#f0d3a6 0,#e9c186 46%,transparent 72%);
+}
+
+body::after{
+    width:360px;
+    height:360px;
+    bottom:-150px;
+    left:-120px;
+    background:radial-gradient(circle,#d6ae75 0,#c49356 48%,transparent 72%);
+}
+
+.page-shell{
+    width:min(1180px,92%);
+    margin:22px auto;
+    border:1px solid var(--line);
+    border-radius:28px;
+    background:linear-gradient(140deg,rgba(255,250,240,0.95),rgba(252,245,233,0.9));
+    box-shadow:0 25px 60px rgba(91,67,35,0.18);
+    backdrop-filter:blur(8px);
+    overflow:hidden;
+}
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:22px 48px;
+    border-bottom:1px solid var(--line);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.logo img{
+    width:56px;
+    height:56px;
+    border-radius:16px;
+    object-fit:cover;
+    border:1px solid var(--line);
+}
+
+.logo h2{
+    font-size:1.08rem;
+    letter-spacing:0.11em;
+    text-transform:uppercase;
+    font-weight:700;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:22px;
+}
+
+nav a{
+    text-decoration:none;
+    color:var(--ink);
+    font-size:0.93rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-weight:600;
+    position:relative;
+}
+
+nav a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-5px;
+    width:0;
+    height:2px;
+    background:var(--accent);
+    transition:width 0.3s ease;
+}
+
+nav a:hover::after,
+nav a.active::after{
+    width:100%;
+}
+
+.projects{
+    padding:54px 48px 62px;
+}
+
+.heading{
+    margin-bottom:34px;
+}
+
+.eyebrow{
+    font-size:0.8rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:10px;
+}
+
+.title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(2.5rem,4.8vw,3.6rem);
+    line-height:1;
+    margin-bottom:10px;
+}
+
+.title span{
+    color:var(--accent-deep);
+}
+
+.subtitle{
+    color:var(--muted);
+    max-width:700px;
+    line-height:1.8;
+}
+
+.project-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+    align-items:stretch;
+}
+
+.project-card{
+    border:1px solid var(--line);
+    border-radius:18px;
+    overflow:hidden;
+    background:rgba(255,255,255,0.65);
+    transition:transform 0.28s ease,box-shadow 0.28s ease;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+}
+
+.project-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 18px 32px rgba(132,95,48,0.19);
+}
+
+.project-preview-wrap{
+    width:100%;
+    height:300px;
+    overflow:hidden;
+    background:#f3eadb;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    cursor:pointer;
+}
+
+.project-preview{
+    width:100%;
+    height:100%;
+    border:0;
+    display:block;
+    object-fit:cover;
+    object-position:top;
+}
+
+.portfolio-preview-mock{
+    width:100%;
+    height:100%;
+    padding:16px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    background:
+        radial-gradient(circle at 85% 18%, rgba(255, 215, 141, 0.42), transparent 35%),
+        linear-gradient(150deg, #24190f 0%, #6e4a22 48%, #c38a44 100%);
+    color:#fff8ee;
+}
+
+.portfolio-preview-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:8px;
+}
+
+.portfolio-brand{
+    font-size:0.8rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    padding:6px 10px;
+    border:1px solid rgba(255,255,255,0.38);
+    border-radius:999px;
+    background:rgba(0,0,0,0.2);
+}
+
+.portfolio-dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#ffdfb0;
+    box-shadow:0 0 16px rgba(255,223,176,0.7);
+}
+
+.portfolio-preview-main h4{
+    font-size:1.45rem;
+    line-height:1.2;
+    margin-bottom:8px;
+}
+
+.portfolio-preview-main p{
+    margin:0;
+    font-size:0.84rem;
+    line-height:1.5;
+    color:rgba(255,248,238,0.9);
+}
+
+.portfolio-preview-chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+}
+
+.portfolio-preview-chips span{
+    font-size:0.67rem;
+    letter-spacing:0.07em;
+    text-transform:uppercase;
+    border:1px solid rgba(255,255,255,0.4);
+    border-radius:999px;
+    padding:5px 8px;
+    background:rgba(0,0,0,0.18);
+}
+
+.project-preview-link::after{
+    content:"Live Preview";
+    position:absolute;
+    left:10px;
+    top:10px;
+    padding:5px 9px;
+    border-radius:999px;
+    font-size:0.65rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:#fff;
+    background:rgba(20,16,12,0.6);
+    border:1px solid rgba(255,255,255,0.45);
+}
+
+.demo-modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:2000;
+    background:rgba(17,13,10,0.88);
+    padding:18px;
+}
+
+.demo-modal.active{
+    display:block;
+}
+
+.demo-modal-content{
+    width:min(1400px,100%);
+    height:calc(100vh - 36px);
+    margin:0 auto;
+    background:#fff8ee;
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+}
+
+.demo-modal-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    padding:12px 14px;
+    border-bottom:1px solid var(--line);
+    background:#f7ebd6;
+}
+
+.demo-modal-title{
+    font-size:0.9rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--accent-deep);
+    font-weight:700;
+}
+
+.demo-modal-actions{
+    display:flex;
+    gap:8px;
+}
+
+.demo-btn{
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--ink);
+    border-radius:999px;
+    text-decoration:none;
+    font-size:0.78rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    font-weight:700;
+    padding:8px 12px;
+    cursor:pointer;
+}
+
+.demo-btn:hover{
+    background:var(--accent);
+    color:#fff;
+}
+
+.demo-modal-frame{
+    width:100%;
+    height:100%;
+    border:0;
+    flex:1;
+    background:#fff;
+}
+
+.project-content{
+    padding:18px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    flex:1;
+}
+
+.project-content h3{
+    margin-bottom:2px;
+    font-size:1.2rem;
+    display:flex;
+    align-items:center;
+    gap:9px;
+    letter-spacing:0.01em;
+}
+
+.project-content h3 i{
+    width:30px;
+    height:30px;
+    border-radius:9px;
+    display:grid;
+    place-items:center;
+    font-size:0.86rem;
+    color:#fff;
+    background:linear-gradient(125deg,var(--accent),#a67635);
+}
+
+.project-content p{
+    color:#5b4e40;
+    line-height:1.65;
+    font-size:0.95rem;
+    margin-bottom:0;
+}
+
+.problem-statement{
+    border:1px solid rgba(184,136,70,0.28);
+    background:rgba(255,255,255,0.7);
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:14px;
+    font-size:0.88rem;
+    line-height:1.55;
+    color:#4b4034;
+}
+
+.problem-statement span{
+    display:block;
+    font-size:0.7rem;
+    letter-spacing:0.11em;
+    text-transform:uppercase;
+    margin-bottom:5px;
+    color:var(--accent-deep);
+    font-weight:700;
+}
+
+.tech-stack{
+    display:inline-block;
+    border:1px solid rgba(143,102,50,0.3);
+    padding:7px 11px;
+    border-radius:999px;
+    font-size:0.75rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--accent-deep);
+    background:rgba(255,255,255,0.7);
+    margin-bottom:6px;
+}
+
+.project-links{
+    display:flex;
+    gap:10px;
+    margin-top:auto;
+}
+
+.project-links a{
+    display:grid;
+    place-items:center;
+    width:40px;
+    height:40px;
+    border:1px solid var(--line);
+    border-radius:50%;
+    color:var(--accent-deep);
+    text-decoration:none;
+    background:rgba(255,255,255,0.8);
+    transition:all 0.2s ease;
+}
+
+.project-links a:hover{
+    background:var(--accent);
+    color:#fff;
+    transform:translateY(-2px);
+}
+
+@media(max-width:1060px){
+    .project-preview-wrap{
+        height:240px;
+    }
+}
+
+@media(max-width:720px){
+    .page-shell{
+        width:94%;
+        margin:14px auto;
+        border-radius:22px;
+    }
+
+    header{
+        flex-direction:column;
+        gap:16px;
+        padding:18px;
+    }
+
+    nav{
+        justify-content:center;
+        gap:14px;
+    }
+
+    nav a{
+        font-size:0.78rem;
+    }
+
+    .projects{
+        padding:26px 18px 30px;
+    }
+
+    .project-grid{
+        grid-template-columns:1fr;
+    }
+
+    .project-preview-wrap{
+        height:180px;
+    }
+
+    .problem-statement{
+        font-size:0.84rem;
+        padding:10px;
+    }
+
+    .subtitle{
+        color:#574a3d;
+        font-size:0.98rem;
+        line-height:1.7;
+    }
+
+    .project-content h3{
+        font-size:1.08rem;
+    }
+
+    .project-content p{
+        color:#4d4033;
+        font-size:0.9rem;
+        line-height:1.62;
+    }
+
+    .demo-modal{
+        padding:8px;
+    }
+
+    .demo-modal-content{
+        height:calc(100vh - 16px);
+    }
+
+    .demo-modal-title{
+        font-size:0.72rem;
+    }
+
+    .demo-btn{
+        font-size:0.68rem;
+        padding:6px 9px;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="page-shell">
+<header>
+    <div class="logo">
+        <img src="profile.jpeg" alt="logo">
+        <h2>Harsha DevSpace</h2>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="Services.html">Services</a>
+        <a href="About.html">About</a>
+        <a href="Projects.html" class="active">Projects</a>
+        <a href="certificates.html">Certificates</a>
+        <a href="Contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="projects">
+    <div class="heading">
+        <p class="eyebrow">Featured Work</p>
+        <h1 class="title">My <span>Projects</span></h1>
+        <p class="subtitle">
+            A curated collection of projects focused on clean design, practical usability,
+            and scalable engineering decisions.
+        </p>
+    </div>
+
+    <div class="project-grid">
+        <div class="project-card">
+            <a class="project-preview-wrap project-preview-link demo-trigger" href="https://homeease-delta.vercel.app/" data-demo-url="https://homeease-delta.vercel.app/" data-demo-title="HomeEase Live Demo" aria-label="Open HomeEase live website">
+                <img class="project-preview" src="https://image.thum.io/get/width/1200/noanimate/https://homeease-delta.vercel.app/" alt="HomeEase live website preview" loading="lazy">
+            </a>
+            <div class="project-content">
+                <h3><i class="fa-solid fa-house"></i>HomeEase</h3>
+                <p>
+                    Modern home services platform focused on clean booking flows,
+                    user-friendly dashboards, and responsive experience across devices.
+                </p>
+                <p class="problem-statement"><span>Problem Statement</span>Users were booking home services through scattered calls and chats, causing delays, low trust, and no clear booking tracking.</p>
+                <div class="tech-stack">HTML | CSS | JavaScript</div>
+                <div class="project-links">
+                    <a href="https://homeease-delta.vercel.app/" aria-label="Open HomeEase project"><i class="fas fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://github.com/vardhan373737/HOMEEASE.git" aria-label="HomeEase GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <a class="project-preview-wrap project-preview-link demo-trigger" href="https://dhanam-chits.vercel.app/" data-demo-url="https://dhanam-chits.vercel.app/" data-demo-title="Chit Fund Management Live Demo" aria-label="Open Chit Fund Management live website">
+                <img class="project-preview" src="https://image.thum.io/get/width/1200/noanimate/https://dhanam-chits.vercel.app/" alt="Chit Fund Management live website preview" loading="lazy">
+            </a>
+            <div class="project-content">
+                <h3><i class="fa-solid fa-wallet"></i>Chit Fund Management</h3>
+                <p>
+                    Secure web platform for managing chit fund members,
+                    payments, installments, and financial reports.
+                </p>
+                <p class="problem-statement"><span>Problem Statement</span>Manual chit fund records created payment mistakes, delayed updates, and poor transparency for members and admins.</p>
+                <div class="tech-stack">HTML | CSS | JavaScript</div>
+                <div class="project-links">
+                    <a href="https://dhanam-chits.vercel.app/" aria-label="Open Chit Fund project"><i class="fas fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://github.com/vardhan373737/Dhanam-chits.git" aria-label="Chit Fund GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <a class="project-preview-wrap project-preview-link demo-trigger" href="./index.html" data-demo-url="./index.html" data-demo-title="Portfolio Live Demo" aria-label="Open Portfolio live website">
+                <div class="portfolio-preview-mock" aria-hidden="true">
+                    <div class="portfolio-preview-top">
+                        <span class="portfolio-brand">Harsha DevSpace</span>
+                        <span class="portfolio-dot"></span>
+                    </div>
+                    <div class="portfolio-preview-main">
+                        <h4>Premium Portfolio Experience</h4>
+                        <p>Showcasing projects, services, certifications, and contact in one modern web presence.</p>
+                    </div>
+                    <div class="portfolio-preview-chips">
+                        <span>Projects</span>
+                        <span>Certificates</span>
+                        <span>Responsive UI</span>
+                    </div>
+                </div>
+            </a>
+            <div class="project-content">
+                <h3><i class="fa-solid fa-id-badge"></i>Portfolio Website</h3>
+                <p>
+                    Personal responsive portfolio website showcasing
+                    projects, certifications, and technical skills.
+                </p>
+                <p class="problem-statement"><span>Problem Statement</span>Recruiters needed one fast mobile-friendly page to evaluate skills, projects, and proof of work instead of checking many separate links.</p>
+                <div class="tech-stack">HTML | CSS | JavaScript</div>
+                <div class="project-links">
+                    <a href="./index.html" aria-label="Open portfolio project"><i class="fas fa-arrow-up-right-from-square"></i></a>
+                    <a href="#" aria-label="Portfolio GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+<div class="demo-modal" id="demoModal" aria-hidden="true">
+    <div class="demo-modal-content">
+        <div class="demo-modal-bar">
+            <p class="demo-modal-title" id="demoModalTitle">Live Demo</p>
+            <div class="demo-modal-actions">
+                <a class="demo-btn" id="demoNewTab" href="#" target="_blank" rel="noopener noreferrer">Open In New Tab</a>
+                <button class="demo-btn" type="button" id="demoCloseBtn">Close</button>
+            </div>
+        </div>
+        <iframe class="demo-modal-frame" id="demoFrame" title="Project live demo"></iframe>
+    </div>
+</div>
+
+<script>
+const demoModal = document.getElementById("demoModal");
+const demoFrame = document.getElementById("demoFrame");
+const demoTitle = document.getElementById("demoModalTitle");
+const demoNewTab = document.getElementById("demoNewTab");
+const demoCloseBtn = document.getElementById("demoCloseBtn");
+const demoTriggers = document.querySelectorAll(".demo-trigger");
+
+function openDemoModal(url, titleText){
+    const resolvedUrl = new URL(url, window.location.href).href;
+    demoFrame.src = resolvedUrl;
+    demoTitle.textContent = titleText;
+    demoNewTab.href = resolvedUrl;
+    demoModal.classList.add("active");
+    demoModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+}
+
+function closeDemoModal(){
+    demoModal.classList.remove("active");
+    demoModal.setAttribute("aria-hidden", "true");
+    demoFrame.src = "";
+    document.body.style.overflow = "";
+}
+
+demoTriggers.forEach(trigger => {
+    trigger.addEventListener("click", (event) => {
+        event.preventDefault();
+        openDemoModal(trigger.dataset.demoUrl, trigger.dataset.demoTitle || "Live Demo");
+    });
+});
+
+demoCloseBtn.addEventListener("click", closeDemoModal);
+
+demoModal.addEventListener("click", (event) => {
+    if(event.target === demoModal){
+        closeDemoModal();
+    }
+});
+
+window.addEventListener("keydown", (event) => {
+    if(event.key === "Escape" && demoModal.classList.contains("active")){
+        closeDemoModal();
+    }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio | About</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+    --bg:#f7f2e8;
+    --surface:#fffaf0;
+    --ink:#1f1a14;
+    --muted:#6e6253;
+    --accent:#b88846;
+    --accent-deep:#8f6632;
+    --line:rgba(143,102,50,0.22);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Plus Jakarta Sans',sans-serif;
+    color:var(--ink);
+    min-height:100vh;
+    background:radial-gradient(circle at 10% 12%,#fff8eb 0,#f5ecdd 38%,#f1e5d2 100%);
+    overflow-x:hidden;
+}
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    z-index:-1;
+    border-radius:50%;
+}
+
+body::before{
+    width:430px;
+    height:430px;
+    top:-130px;
+    right:-110px;
+    background:radial-gradient(circle,#f0d3a6 0,#e9c186 46%,transparent 72%);
+}
+
+body::after{
+    width:360px;
+    height:360px;
+    bottom:-150px;
+    left:-120px;
+    background:radial-gradient(circle,#d6ae75 0,#c49356 48%,transparent 72%);
+}
+
+.page-shell{
+    width:min(1180px,92%);
+    margin:22px auto;
+    border:1px solid var(--line);
+    border-radius:28px;
+    background:linear-gradient(140deg,rgba(255,250,240,0.95),rgba(252,245,233,0.9));
+    box-shadow:0 25px 60px rgba(91,67,35,0.18);
+    backdrop-filter:blur(8px);
+    overflow:hidden;
+}
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:22px 48px;
+    border-bottom:1px solid var(--line);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.logo img{
+    width:56px;
+    height:56px;
+    border-radius:16px;
+    object-fit:cover;
+    border:1px solid var(--line);
+}
+
+.logo h2{
+    font-size:1.08rem;
+    letter-spacing:0.11em;
+    text-transform:uppercase;
+    font-weight:700;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:22px;
+}
+
+nav a{
+    text-decoration:none;
+    color:var(--ink);
+    font-size:0.93rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-weight:600;
+    position:relative;
+}
+
+nav a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-5px;
+    width:0;
+    height:2px;
+    background:var(--accent);
+    transition:width 0.3s ease;
+}
+
+nav a:hover::after,
+nav a.active::after{
+    width:100%;
+}
+
+.about-section{
+    padding:54px 48px 60px;
+    display:grid;
+    grid-template-columns:360px 1fr;
+    gap:30px;
+}
+
+.about-left{
+    border:1px solid var(--line);
+    border-radius:24px;
+    background:rgba(255,255,255,0.52);
+    padding:28px;
+    align-self:start;
+}
+
+.about-left h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2.3rem;
+    line-height:1;
+    margin-bottom:14px;
+}
+
+.about-left p{
+    color:var(--muted);
+    line-height:1.8;
+    margin-bottom:24px;
+}
+
+.tabs{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.tab{
+    border:1px solid var(--line);
+    padding:12px 14px;
+    border-radius:12px;
+    font-size:0.9rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    cursor:pointer;
+    transition:all 0.25s ease;
+    background:rgba(255,255,255,0.65);
+}
+
+.tab:hover{
+    background:rgba(255,255,255,0.9);
+    transform:translateX(3px);
+}
+
+.tab.active{
+    border-color:var(--accent);
+    background:linear-gradient(130deg,rgba(184,136,70,0.22),rgba(184,136,70,0.05));
+    color:var(--accent-deep);
+}
+
+.about-right{
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:28px;
+    background:rgba(255,255,255,0.6);
+}
+
+.tab-content{
+    display:none;
+}
+
+.tab-content.active{
+    display:block;
+    animation:fadeIn 0.45s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;transform:translateY(6px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+.section-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2.6rem;
+    margin-bottom:18px;
+}
+
+.section-title span{
+    color:var(--accent-deep);
+}
+
+.scroll-box{
+    max-height:430px;
+    overflow-y:auto;
+    padding-right:8px;
+}
+
+.scroll-box::-webkit-scrollbar{
+    width:7px;
+}
+
+.scroll-box::-webkit-scrollbar-thumb{
+    background:var(--accent);
+    border-radius:10px;
+}
+
+.card{
+    border:1px solid var(--line);
+    background:rgba(255,255,255,0.75);
+    padding:18px;
+    border-radius:14px;
+    margin-bottom:14px;
+    transition:all 0.25s ease;
+    cursor:pointer;
+}
+
+.card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 24px rgba(132,95,48,0.12);
+}
+
+.card.active-card{
+    border-color:var(--accent);
+    box-shadow:0 14px 26px rgba(167,116,52,0.25);
+}
+
+.card h3{
+    margin:8px 0;
+    color:var(--accent-deep);
+}
+
+.year{
+    color:var(--muted);
+    font-size:0.86rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+}
+
+.description{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+.skills-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:14px;
+}
+
+.skill-card{
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:rgba(255,255,255,0.72);
+    min-height:120px;
+    display:grid;
+    place-items:center;
+    transition:all 0.25s ease;
+    cursor:pointer;
+}
+
+.skill-card:hover{
+    transform:translateY(-2px) scale(1.02);
+}
+
+.skill-card.active-card{
+    border-color:var(--accent);
+    box-shadow:0 14px 26px rgba(167,116,52,0.25);
+}
+
+.skill-card i{
+    font-size:2.8rem;
+}
+
+.fa-html5{color:#e34f26;}
+.fa-css3-alt{color:#1f73b7;}
+.fa-js{color:#e3b017;}
+.fa-react{color:#2f8fae;}
+.fa-node-js{color:#46834f;}
+.fa-database{color:#8e6f32;}
+
+@media(max-width:1060px){
+    .about-section{
+        grid-template-columns:1fr;
+    }
+
+    .tabs{
+        flex-direction:row;
+        flex-wrap:wrap;
+    }
+
+    .tab{
+        flex:1 1 45%;
+        text-align:center;
+    }
+}
+
+@media(max-width:720px){
+    .page-shell{
+        width:94%;
+        margin:14px auto;
+        border-radius:22px;
+    }
+
+    header{
+        flex-direction:column;
+        gap:16px;
+        padding:18px;
+    }
+
+    nav{
+        justify-content:center;
+        gap:14px;
+    }
+
+    nav a{
+        font-size:0.78rem;
+    }
+
+    .about-section,
+    .about-left,
+    .about-right{
+        padding:18px;
+    }
+
+    .about-section{
+        gap:18px;
+    }
+
+    .about-left h2{
+        font-size:1.9rem;
+    }
+
+    .section-title{
+        font-size:2rem;
+    }
+
+    .skills-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="page-shell">
+<header>
+    <div class="logo">
+        <img src="profile.jpeg" alt="logo">
+        <h2>Harsha DevSpace</h2>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="Services.html">Services</a>
+        <a href="About.html" class="active">About</a>
+        <a href="Projects.html">Projects</a>
+        <a href="certificates.html">Certificates</a>
+        <a href="Contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="about-section">
+<div class="about-left">
+    <h2>Why Hire Me?</h2>
+    <p>
+        I am a passionate Computer Science Engineering student who enjoys
+        building modern web applications and solving real-world problems.
+    </p>
+
+    <div class="tabs">
+        <span class="tab active" data-section="experience">Experience</span>
+        <span class="tab" data-section="education">Education</span>
+        <span class="tab" data-section="skills">Skills</span>
+        <span class="tab" data-section="about-me">About Me</span>
+    </div>
+</div>
+
+<div class="about-right">
+<aside id="experience" class="tab-content active">
+    <h2 class="section-title">My <span>Experience</span></h2>
+    <div class="scroll-box">
+        <div class="card active-card">
+            <span class="year">2023 - 2024</span>
+            <h3>Frontend Developer</h3>
+            <p class="description">Built responsive UIs using React.js.</p>
+        </div>
+
+        <div class="card">
+            <span class="year">2022 - 2023</span>
+            <h3>MERN Stack Intern</h3>
+            <p class="description">Worked with MongoDB and Node.js.</p>
+        </div>
+
+        <div class="card">
+            <span class="year">2021 - 2022</span>
+            <h3>Web Developer</h3>
+            <p class="description">Designed responsive websites.</p>
+        </div>
+    </div>
+</aside>
+
+<aside id="education" class="tab-content">
+    <h2 class="section-title">My <span>Education</span></h2>
+    <div class="scroll-box">
+        <div class="card">
+            <span class="year">2023 - 2027</span>
+            <h3>B.Tech in CSE</h3>
+            <p class="description">KL University</p>
+        </div>
+
+        <div class="card">
+            <span class="year">2021 - 2023</span>
+            <h3>Intermediate</h3>
+            <p class="description">Narayana College</p>
+        </div>
+
+        <div class="card">
+            <span class="year">2020</span>
+            <h3>SSC</h3>
+            <p class="description">State Board</p>
+        </div>
+    </div>
+</aside>
+
+<aside id="skills" class="tab-content">
+    <h2 class="section-title">My <span>Skills</span></h2>
+    <div class="scroll-box">
+        <div class="skills-grid">
+            <div class="skill-card active-card"><i class="fab fa-html5"></i></div>
+            <div class="skill-card"><i class="fab fa-css3-alt"></i></div>
+            <div class="skill-card"><i class="fab fa-js"></i></div>
+            <div class="skill-card"><i class="fab fa-react"></i></div>
+            <div class="skill-card"><i class="fab fa-node-js"></i></div>
+            <div class="skill-card"><i class="fas fa-database"></i></div>
+        </div>
+    </div>
+</aside>
+
+<aside id="about-me" class="tab-content">
+    <h2 class="section-title">About <span>Me</span></h2>
+    <div class="scroll-box">
+        <p class="description" style="margin-bottom:16px;">
+            I am a passionate developer dedicated to building impactful digital experiences,
+            blending creativity and code to solve real-world problems efficiently and effectively.
+        </p>
+
+        <div class="card">
+            <h3>Name</h3>
+            <p class="description">KODIGANTI HARSHAVARDHAN</p>
+        </div>
+
+        <div class="card">
+            <h3>Industry</h3>
+            <p class="description">Software and IT</p>
+        </div>
+
+        <div class="card">
+            <h3>Address</h3>
+            <p class="description">Andhra Pradesh, India</p>
+        </div>
+
+        <div class="card">
+            <h3>Country</h3>
+            <p class="description">India</p>
+        </div>
+
+        <div class="card">
+            <h3>Experience</h3>
+            <p class="description">2+ years</p>
+        </div>
+    </div>
+</aside>
+</div>
+</section>
+</div>
+
+<script>
+const tabs = document.querySelectorAll(".tab");
+const contents = document.querySelectorAll(".tab-content");
+
+tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        contents.forEach(c => c.classList.remove("active"));
+        tab.classList.add("active");
+        document.getElementById(tab.dataset.section).classList.add("active");
+    });
+});
+
+const allCards = document.querySelectorAll(".card");
+allCards.forEach(card => {
+    card.addEventListener("click", () => {
+        allCards.forEach(c => c.classList.remove("active-card"));
+        card.classList.add("active-card");
+    });
+});
+
+const allSkills = document.querySelectorAll(".skill-card");
+allSkills.forEach(skill => {
+    skill.addEventListener("click", () => {
+        allSkills.forEach(s => s.classList.remove("active-card"));
+        skill.classList.add("active-card");
+    });
+});
+</script>
+
+</body>
+</html>
