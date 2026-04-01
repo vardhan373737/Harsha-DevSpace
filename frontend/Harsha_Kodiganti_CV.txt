@@ -1,0 +1,43 @@
+KODIGANTI HARSHAVARDHAN
+Full Stack Developer
+
+Phone: +91 9346412185
+Email: hv0279135@gmail.com
+Country: India
+Portfolio: https://harsha-dev-space.vercel.app/
+GitHub: https://github.com/vardhan373737
+
+PROFILE
+Dedicated Computer Science Engineering student passionate about full-stack development, scalable applications, and impactful digital solutions using modern technologies.
+
+TECHNICAL SKILLS
+- HTML
+- CSS
+- JavaScript
+- Responsive Web Design
+- UI Development
+- Project Deployment
+
+FEATURED PROJECTS
+1. HomeEase
+   - Modern home services platform with clean booking flows, user-friendly dashboards, and responsive UI.
+   - Live: https://homeease-delta.vercel.app/
+   - Code: https://github.com/vardhan373737/HOMEEASE.git
+
+2. Chit Fund Management
+   - Secure platform for member records, payments, installments, and financial reporting.
+   - Live: https://dhanam-chits.vercel.app/
+   - Code: https://github.com/vardhan373737/Dhanam-chits.git
+
+3. Portfolio Website
+   - Personal responsive portfolio website showcasing projects, certifications, and technical skills.
+   - Live: https://harsha-dev-space.vercel.app/
+   - Code: https://github.com/vardhan373737/Harsha-DevSpace.git
+
+HIGHLIGHTS
+- 15+ projects built
+- 8+ tech stacks used
+- 100% delivery focus
+
+DECLARATION
+I hereby declare that the above information is true to the best of my knowledge.

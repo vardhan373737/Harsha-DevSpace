@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kodiganti Harshavardhan | Resume</title>
+<style>
+:root{
+    --ink:#1f1a14;
+    --muted:#605446;
+    --accent:#a87635;
+    --line:#d4c5af;
+    --light-bg:#f9f7f2;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    height:100%;
+    font-family:"Calibri","Segoe UI",sans-serif;
+    color:var(--ink);
+}
+
+body{
+    background:#ffffff;
+    padding:0;
+}
+
+.resume{
+    width:8.5in;
+    height:11in;
+    margin:0 auto;
+    padding:0.5in;
+    box-shadow:0 0 20px rgba(0,0,0,0.1);
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    overflow:hidden;
+}
+
+.header{
+    border-bottom:2px solid var(--accent);
+    padding-bottom:10px;
+    margin-bottom:12px;
+}
+
+.name{
+    font-size:22px;
+    font-weight:900;
+    letter-spacing:0.5px;
+    margin:0 0 5px;
+}
+
+.contact-info{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    font-size:10px;
+    color:var(--muted);
+}
+
+.contact-info span{
+    display:flex;
+    align-items:center;
+}
+
+.section-title{
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-top:10px;
+    margin-bottom:6px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:4px;
+}
+
+.section{
+    margin-bottom:8px;
+}
+
+.profile-text{
+    font-size:10px;
+    line-height:1.4;
+    color:var(--muted);
+    text-align:justify;
+}
+
+.edu-item{
+    margin-bottom:5px;
+    font-size:10px;
+}
+
+.edu-degree{
+    font-weight:700;
+    color:var(--ink);
+}
+
+.edu-details{
+    font-size:9px;
+    color:var(--muted);
+}
+
+.skills-category{
+    font-size:10px;
+    margin-bottom:4px;
+}
+
+.skills-category strong{
+    color:var(--accent);
+}
+
+.project-item{
+    margin-bottom:6px;
+    font-size:10px;
+}
+
+.project-title{
+    font-weight:700;
+    color:var(--ink);
+}
+
+.project-desc{
+    margin-top:2px;
+    line-height:1.35;
+    color:var(--muted);
+}
+
+.project-desc li{
+    margin-left:12px;
+    margin-bottom:2px;
+}
+
+.cert-item{
+    display:flex;
+    justify-content:space-between;
+    font-size:10px;
+    margin-bottom:3px;
+}
+
+.cert-name{
+    font-weight:700;
+    color:var(--ink);
+}
+
+.cert-org{
+    color:var(--muted);
+    font-size:9px;
+}
+
+.cert-date{
+    color:var(--muted);
+    font-size:9px;
+}
+
+.leadership-item{
+    font-size:10px;
+    margin-bottom:3px;
+    line-height:1.35;
+}
+
+.leadership-role{
+    font-weight:700;
+    color:var(--accent);
+}
+
+a{
+    color:var(--accent);
+    text-decoration:none;
+}
+
+@media print{
+    body{
+        background:#ffffff;
+        padding:0;
+        margin:0;
+    }
+    
+    .resume{
+        width:100%;
+        height:100%;
+        margin:0;
+        padding:0.5in;
+        box-shadow:none;
+    }
+}
+
+@media(max-width:900px){
+    .resume{
+        width:100%;
+        height:auto;
+    }
+}
+</style>
+</head>
+<body>
+<div class="resume">
+    <div class="header">
+        <h1 class="name">KODIGANTI HARSHAVARDHAN</h1>
+        <div class="contact-info">
+            <span>+91 9346412185</span>
+            <span>|</span>
+            <span><a href="mailto:hv0279135@gmail.com">hv0279135@gmail.com</a></span>
+            <span>|</span>
+            <span><a href="https://github.com/vardhan373737" target="_blank">GitHub</a></span>
+            <span>|</span>
+            <span><a href="https://harsha-dev-space.vercel.app/" target="_blank">Portfolio</a></span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Career Objective</h2>
+        <p class="profile-text">Dedicated Computer Science Engineering student with a strong interest in full-stack development and scalable applications. Seeking opportunities to apply technical and problem-solving skills to develop impactful digital solutions while contributing to meaningful projects. Eager to continuously learn and create innovative technological solutions in real-world environments.</p>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Education</h2>
+        <div class="edu-item">
+            <span class="edu-degree">B.Tech in Computer Science Engineering</span>
+            <span class="edu-details">| KL University | 2023-2027</span>
+        </div>
+        <div class="edu-item">
+            <span class="edu-degree">Intermediate</span>
+            <span class="edu-details">Narayana College | 2021-2023</span>
+        </div>
+        <div class="edu-item">
+            <span class="edu-degree">SSC</span>
+            <span class="edu-details">CBSE | 2020</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-category"><strong>Frontend Development:</strong> HTML, CSS, JavaScript, React.js, Responsive Design, UI Development</div>
+        <div class="skills-category"><strong>Backend & Databases:</strong> Node.js, Express.js, MongoDB, REST APIs, Data Management</div>
+        <div class="skills-category"><strong>Developer Tools & Version Control:</strong> Git, GitHub, VS Code, Project Deployment on Vercel</div>
+        <div class="skills-category"><strong>Core Concepts:</strong> Data Structures & Algorithms, Web Architecture, Software Design Patterns</div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Featured Projects</h2>
+        
+        <div class="project-item">
+            <span class="project-title">HomeEase – Modern Home Services Platform</span>
+            <div class="project-desc">
+                <ul>
+                    <li>Engineered a responsive home services booking platform with clean UI/UX focused on seamless user experience.</li>
+                    <li>Implemented user-friendly dashboards with intuitive booking flows and real-time status tracking.</li>
+                    <li>Built with HTML, CSS, JavaScript to deliver responsive experience across all devices and browsers.</li>
+                    <li>Live Demo: <a href="https://homeease-delta.vercel.app/" target="_blank">homeease-delta.vercel.app</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="project-item">
+            <span class="project-title">Chit Fund Management – Secure Financial Platform</span>
+            <div class="project-desc">
+                <ul>
+                    <li>Developed a secure web platform for comprehensive chit fund member management and financial tracking.</li>
+                    <li>Implemented features for payment processing, installment management, and automated financial reports.</li>
+                    <li>Designed database schema using MongoDB for efficient data storage and retrieval of member records.</li>
+                    <li>Live Demo: <a href="https://dhanam-chits.vercel.app/" target="_blank">dhanam-chits.vercel.app</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="project-item">
+            <span class="project-title">Premium Portfolio Website – Responsive Personal Brand</span>
+            <div class="project-desc">
+                <ul>
+                    <li>Built a modern, fully responsive portfolio website showcasing projects and technical expertise.</li>
+                    <li>Designed premium visual experience with smooth animations, professional typography, and strong hierarchy.</li>
+                    <li>Implemented multi-page navigation with smooth UX across projects, certifications, and contact sections.</li>
+                    <li>Live Demo: <a href="https://harsha-dev-space.vercel.app/" target="_blank">harsha-dev-space.vercel.app</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Achievements & Highlights</h2>
+        <div class="skills-category">• 15+ Projects Built | 8+ Tech Stacks Used | 100% Project Delivery Focus</div>
+        <div class="skills-category">• Expertise in End-to-End Web Development from Design to Deployment</div>
+        <div class="skills-category">• Strong foundation in Data Structures, Algorithms, and Software Architecture Principles</div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Certifications</h2>
+        <div class="cert-item">
+            <div>
+                <span class="cert-name">AWS Cloud Practitioner</span><br>
+                <span class="cert-org">Amazon Web Services (AWS)</span>
+            </div>
+            <span class="cert-date">2025</span>
+        </div>
+        <div class="cert-item">
+            <div>
+                <span class="cert-name">AWS AI Certification</span><br>
+                <span class="cert-org">Amazon Web Services (AWS)</span>
+            </div>
+            <span class="cert-date">2025</span>
+        </div>
+        <div class="cert-item">
+            <div>
+                <span class="cert-name">RPA Certification</span><br>
+                <span class="cert-org">Automation Anywhere</span>
+            </div>
+            <span class="cert-date">2024</span>
+        </div>
+        <div class="cert-item">
+            <div>
+                <span class="cert-name">MongoDB Developer</span><br>
+                <span class="cert-org">MongoDB University</span>
+            </div>
+            <span class="cert-date">2024</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Leadership & Additional Information</h2>
+        <div class="leadership-item"><span class="leadership-role">Technical Contributor:</span> Active open-source contributor and maintainer of personal development projects on GitHub.</div>
+        <div class="leadership-item"><span class="leadership-role">Languages:</span> English (Fluent), Telugu (Native), Hindi (Conversational)</div>
+    </div>
+</div>
+</body>
+</html>

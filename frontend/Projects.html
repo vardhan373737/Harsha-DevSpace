@@ -159,6 +159,31 @@ nav a.active::after{
     margin-bottom:34px;
 }
 
+.preview-band{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:9px 16px;
+    border:1.5px solid rgba(184,136,70,0.45);
+    border-radius:999px;
+    background:rgba(184,136,70,0.12);
+    margin-bottom:16px;
+    font-size:0.8rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--accent-deep);
+    font-weight:700;
+}
+
+.preview-band::before{
+    content:"";
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 12px rgba(184,136,70,0.6);
+}
+
 .eyebrow{
     font-size:0.8rem;
     letter-spacing:0.18em;
@@ -578,6 +603,7 @@ nav a.active::after{
 
 <section class="projects">
     <div class="heading">
+        <div class="preview-band">Live Preview • Harsha DevSpace</div>
         <p class="eyebrow">Featured Work</p>
         <h1 class="title">My <span>Projects</span></h1>
         <p class="subtitle">
