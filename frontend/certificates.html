@@ -176,6 +176,18 @@ nav a.active::after{
     line-height:1.8;
 }
 
+.sr-only{
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+    border:0;
+}
+
 .cert-grid{
     display:grid;
     grid-template-columns:repeat(3,minmax(0,1fr));
@@ -187,6 +199,12 @@ nav a.active::after{
     border-radius:18px;
     padding:22px;
     background:rgba(255,255,255,0.66);
+    width:100%;
+    text-align:left;
+    font-family:inherit;
+    color:inherit;
+    appearance:none;
+    -webkit-appearance:none;
     cursor:pointer;
     transition:transform 0.28s ease,box-shadow 0.28s ease;
 }
@@ -199,6 +217,13 @@ nav a.active::after{
 .cert-card.active-card{
     border-color:var(--accent);
     box-shadow:0 16px 28px rgba(167,116,52,0.28);
+}
+
+.cert-card:focus-visible,
+.close-btn:focus-visible,
+.verify-btn:focus-visible{
+    outline:3px solid rgba(184,136,70,0.45);
+    outline-offset:2px;
 }
 
 .cert-card i{
@@ -250,6 +275,9 @@ nav a.active::after{
     top:8px;
     right:12px;
     font-size:1.9rem;
+    border:none;
+    background:transparent;
+    line-height:1;
     color:var(--accent-deep);
     cursor:pointer;
 }
@@ -309,7 +337,7 @@ nav a.active::after{
 <div class="page-shell">
 <header>
     <div class="logo">
-        <img src="profile.jpeg" alt="logo">
+        <img src="profile.jpeg" alt="Harsha DevSpace logo">
         <h2>Harsha DevSpace</h2>
     </div>
 
@@ -333,62 +361,103 @@ nav a.active::after{
     </div>
 
     <div class="cert-grid">
-        <div class="cert-card" onclick="openModal('aws-cloud.png','https://cp.certmetrics.com/amazon/en/public/verify/credential/9347e691bd9a47f29ce59e361a03a9f3')">
+        <button type="button" class="cert-card" data-image="aws-cloud.png" data-verify="https://cp.certmetrics.com/amazon/en/public/verify/credential/9347e691bd9a47f29ce59e361a03a9f3" aria-label="View AWS Cloud Practitioner certificate">
             <i class="fab fa-aws"></i>
             <h3>AWS Cloud Practitioner</h3>
             <p>Amazon Web Services | 2025</p>
-        </div>
+        </button>
 
-        <div class="cert-card" onclick="openModal('rpa.png','https://certificates.automationanywhere.com/a8c95a99-30eb-454c-83c8-916ccf0f513e#acc.4023akc5')">
+        <button type="button" class="cert-card" data-image="rpa.png" data-verify="https://certificates.automationanywhere.com/a8c95a99-30eb-454c-83c8-916ccf0f513e#acc.4023akc5" aria-label="View RPA certificate">
             <i class="fas fa-robot"></i>
             <h3>RPA Certification</h3>
             <p>Automation Anywhere | 2024</p>
-        </div>
+        </button>
 
-        <div class="cert-card" onclick="openModal('mongodb.png','https://www.credly.com/badges/50bc955a-2a6c-4836-bbc6-6f7f0684ea75')">
+        <button type="button" class="cert-card" data-image="mongodb.png" data-verify="https://www.credly.com/badges/50bc955a-2a6c-4836-bbc6-6f7f0684ea75" aria-label="View MongoDB Developer certificate">
             <i class="fas fa-database"></i>
             <h3>MongoDB Developer</h3>
             <p>MongoDB University | 2024</p>
-        </div>
+        </button>
 
-        <div class="cert-card" onclick="openModal('awsai.png','https://cp.certmetrics.com/amazon/en/public/verify/credential/919830e30e084b77bf7f31657f58ea17')">
+        <button type="button" class="cert-card" data-image="awsai.png" data-verify="https://cp.certmetrics.com/amazon/en/public/verify/credential/919830e30e084b77bf7f31657f58ea17" aria-label="View AWS AI certificate">
             <i class="fas fa-brain"></i>
             <h3>AWS AI Certification</h3>
             <p>Amazon Web Services | 2025</p>
-        </div>
+        </button>
     </div>
 </section>
 </div>
 
-<div class="modal" id="imageModal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
+<div class="modal" id="imageModal" role="dialog" aria-modal="true" aria-labelledby="certificateModalTitle" aria-hidden="true">
+    <div class="modal-content" tabindex="-1">
+        <h2 id="certificateModalTitle" class="sr-only">Certificate Preview</h2>
+        <button type="button" class="close-btn" id="closeModalBtn" aria-label="Close certificate modal">&times;</button>
         <img id="modalImage" alt="Certificate preview">
-        <a id="verifyBtn" href="#" target="_blank" class="verify-btn">Verify Certificate</a>
+        <a id="verifyBtn" href="#" target="_blank" rel="noopener noreferrer" class="verify-btn">Verify Certificate</a>
     </div>
 </div>
 
 <script>
+const modal = document.getElementById("imageModal");
+const modalContent = modal.querySelector(".modal-content");
+const modalImage = document.getElementById("modalImage");
+const verifyBtn = document.getElementById("verifyBtn");
+const closeModalBtn = document.getElementById("closeModalBtn");
+
+let lastFocusedElement = null;
+
 function openModal(imageSrc, verifyLink){
-    document.getElementById("imageModal").style.display = "flex";
-    document.getElementById("modalImage").src = imageSrc;
-    document.getElementById("verifyBtn").href = verifyLink;
+    lastFocusedElement = document.activeElement;
+    modal.style.display = "flex";
+    modal.setAttribute("aria-hidden", "false");
+    modalImage.src = imageSrc;
+    verifyBtn.href = verifyLink;
+    closeModalBtn.focus();
 }
 
 function closeModal(){
-    document.getElementById("imageModal").style.display = "none";
+    modal.style.display = "none";
+    modal.setAttribute("aria-hidden", "true");
+    if(lastFocusedElement && typeof lastFocusedElement.focus === "function"){
+        lastFocusedElement.focus();
+    }
 }
 
 window.onclick = function(e){
-    const modal = document.getElementById("imageModal");
     if(e.target === modal){
         closeModal();
     }
 };
 
+closeModalBtn.addEventListener("click", closeModal);
+document.addEventListener("keydown", function(e){
+    if(e.key === "Escape" && modal.style.display === "flex"){
+        closeModal();
+    }
+
+    if(e.key === "Tab" && modal.style.display === "flex"){
+        const focusable = modalContent.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])');
+        if(focusable.length === 0){
+            return;
+        }
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if(e.shiftKey && document.activeElement === first){
+            e.preventDefault();
+            last.focus();
+        } else if(!e.shiftKey && document.activeElement === last){
+            e.preventDefault();
+            first.focus();
+        }
+    }
+});
+
 const cards = document.querySelectorAll(".cert-card");
 cards.forEach(card => {
     card.addEventListener("click", () => {
+        openModal(card.dataset.image, card.dataset.verify);
         cards.forEach(c => c.classList.remove("active-card"));
         card.classList.add("active-card");
     });

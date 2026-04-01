@@ -291,6 +291,65 @@ nav a.active::after{
     line-height:1.7;
 }
 
+/* Experience tab specific visual tuning */
+#experience{
+    border:1px solid rgba(190,170,138,0.45);
+    border-radius:30px;
+    padding:24px;
+    background:rgba(248,245,239,0.8);
+}
+
+#experience .section-title{
+    margin-bottom:22px;
+    font-size:3rem;
+}
+
+#experience .scroll-box{
+    max-height:none;
+    overflow:visible;
+    padding-right:0;
+}
+
+#experience .card{
+    border:1px solid #d7d1c9;
+    background:#f8f8f8;
+    border-radius:18px;
+    padding:22px;
+    margin-bottom:16px;
+    box-shadow:0 3px 10px rgba(76,56,31,0.06);
+}
+
+#experience .card.active-card{
+    border-color:#bc8a4a;
+    box-shadow:0 3px 10px rgba(76,56,31,0.06);
+}
+
+#experience .card:hover{
+    transform:none;
+    box-shadow:0 3px 10px rgba(76,56,31,0.06);
+}
+
+#experience .year{
+    display:block;
+    font-size:1.08rem;
+    letter-spacing:0;
+    text-transform:none;
+    color:#5d5146;
+    font-family:'Cormorant Garamond',serif;
+}
+
+#experience h3{
+    margin:8px 0 8px;
+    font-size:1.95rem;
+    line-height:1.08;
+}
+
+#experience .description{
+    font-size:1.12rem;
+    color:#5f5449;
+    line-height:1.45;
+}
+
 .skills-grid{
     display:grid;
     grid-template-columns:repeat(3,minmax(0,1fr));
@@ -384,6 +443,33 @@ nav a.active::after{
         font-size:2rem;
     }
 
+    #experience{
+        border-radius:22px;
+        padding:16px;
+    }
+
+    #experience .section-title{
+        font-size:2.35rem;
+        margin-bottom:14px;
+    }
+
+    #experience .card{
+        padding:16px;
+        border-radius:14px;
+    }
+
+    #experience .year{
+        font-size:1rem;
+    }
+
+    #experience h3{
+        font-size:1.55rem;
+    }
+
+    #experience .description{
+        font-size:1rem;
+    }
+
     .skills-grid{
         grid-template-columns:repeat(2,minmax(0,1fr));
     }
@@ -395,7 +481,7 @@ nav a.active::after{
 <div class="page-shell">
 <header>
     <div class="logo">
-        <img src="profile.jpeg" alt="logo">
+        <img src="profile.jpeg" alt="Harsha DevSpace logo">
         <h2>Harsha DevSpace</h2>
     </div>
 
@@ -453,21 +539,21 @@ nav a.active::after{
     <h2 class="section-title">My <span>Education</span></h2>
     <div class="scroll-box">
         <div class="card">
-            <span class="year">2023 - 2027</span>
-            <h3>B.Tech in CSE</h3>
-            <p class="description">KL University</p>
+            <span class="year">2023 - Present</span>
+            <h3>B.Tech in Computer Science and Engineering (CSE)</h3>
+            <p class="description">KLH University - CGPA: 8.5</p>
         </div>
 
         <div class="card">
-            <span class="year">2021 - 2023</span>
+            <span class="year">2021 - 2023 (Class 12th)</span>
             <h3>Intermediate</h3>
-            <p class="description">Narayana College</p>
+            <p class="description">Narayana College (93%)</p>
         </div>
 
         <div class="card">
-            <span class="year">2020</span>
-            <h3>SSC</h3>
-            <p class="description">State Board</p>
+            <span class="year">2021 (Class 10th)</span>
+            <h3>CBSE</h3>
+            <p class="description">Central Board of Secondary Education</p>
         </div>
     </div>
 </aside>
@@ -506,7 +592,7 @@ nav a.active::after{
 
         <div class="card">
             <h3>Address</h3>
-            <p class="description">Andhra Pradesh, India</p>
+            <p class="description">Telangana, India</p>
         </div>
 
         <div class="card">

@@ -3,12 +3,17 @@ Full Stack Developer
 
 Phone: +91 9346412185
 Email: hv0279135@gmail.com
-Country: India
+Country: Telangana, India
 Portfolio: https://harsha-dev-space.vercel.app/
 GitHub: https://github.com/vardhan373737
 
 PROFILE
 Dedicated Computer Science Engineering student passionate about full-stack development, scalable applications, and impactful digital solutions using modern technologies.
+
+EDUCATION
+- B.Tech in Computer Science and Engineering (CSE), KLH University | 2023-Present | CGPA: 8.5
+- Intermediate, Narayana College | 2021-2023 (Class 12th) | 93%
+- CBSE, Central Board of Secondary Education | 2021 (Class 10th)
 
 TECHNICAL SKILLS
 - HTML

@@ -242,6 +242,18 @@ nav a.active::after{
     width:100%;
 }
 
+.sr-only{
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+    border:0;
+}
+
 .form-group input,
 .form-group textarea{
     width:100%;
@@ -302,6 +314,35 @@ nav a.active::after{
     font-weight:600;
 }
 
+.error-message{
+    display:none;
+    margin-top:14px;
+    border-radius:12px;
+    background:rgba(163,58,58,0.12);
+    color:#8f2a2a;
+    text-align:center;
+    border:1px solid rgba(163,58,58,0.35);
+    padding:10px 12px;
+    font-weight:600;
+}
+
+.consent-note{
+    margin-top:12px;
+    color:var(--muted);
+    font-size:0.86rem;
+    line-height:1.6;
+}
+
+.consent-note label{
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+}
+
+.consent-note input{
+    margin-top:2px;
+}
+
 @media(max-width:1060px){
     .contact-section{
         grid-template-columns:1fr;
@@ -351,7 +392,7 @@ nav a.active::after{
 <div class="page-shell">
 <header>
     <div class="logo">
-        <img src="profile.jpeg" alt="logo">
+        <img src="profile.jpeg" alt="Harsha DevSpace logo">
         <h2>Harsha DevSpace</h2>
     </div>
 
@@ -393,7 +434,7 @@ nav a.active::after{
         <i class="fas fa-map-marker-alt"></i>
         <div>
             <h4>Country</h4>
-            <p>India</p>
+            <p>Telangana, India</p>
         </div>
     </div>
 </div>
@@ -401,29 +442,49 @@ nav a.active::after{
 <div class="contact-right">
     <h2><span>Contact</span> Me</h2>
 
-    <form id="contactForm">
+    <form id="contactForm" novalidate>
         <div class="form-row">
             <div class="form-group">
-                <input type="text" id="name" placeholder="Your Name" required>
+                <label for="name" class="sr-only">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" autocomplete="name" required>
             </div>
             <div class="form-group">
-                <input type="email" id="email" placeholder="Your Email" required>
+                <label for="email" class="sr-only">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Your Email" autocomplete="email" required>
             </div>
         </div>
 
         <div class="form-group">
-            <input type="text" id="phone" placeholder="Your Phone">
+            <label for="phone" class="sr-only">Your Phone</label>
+            <input type="text" id="phone" name="phone" placeholder="Your Phone" autocomplete="tel">
         </div>
 
         <div class="form-group">
-            <textarea id="message" placeholder="Your Message" required></textarea>
+            <label for="message" class="sr-only">Your Message</label>
+            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
         </div>
+
+        <div class="form-group sr-only" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <input type="hidden" id="formLoadedAt" name="formLoadedAt" value="">
 
         <button type="submit" class="btn">Send Message</button>
 
-        <div class="success-message" id="successMsg">
+        <div class="consent-note">
+            <label for="consent">
+                <input type="checkbox" id="consent" name="consent" required>
+                <span>I consent to storing and processing my details for a reply to this inquiry.</span>
+            </label>
+        </div>
+
+        <div class="success-message" id="successMsg" role="status" aria-live="polite">
             Message Sent Successfully!
         </div>
+
+        <div class="error-message" id="errorMsg" role="alert" aria-live="assertive"></div>
     </form>
 </div>
 </section>
