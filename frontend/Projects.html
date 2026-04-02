@@ -3,6 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- SEO CHECKLIST (keep on every page)
+1) Unique <title> and meta description
+2) Canonical URL points to final public URL
+3) robots set to index,follow for public pages
+4) Open Graph + Twitter tags updated
+5) One primary <h1> in body content
+6) Images use meaningful alt text
+7) Internal links are crawlable
+8) JSON-LD schema when applicable
+9) Page URL included in sitemap.xml
+10) Validate in Google Search Console after deploy -->
 <title>Harsha DevSpace | Projects</title>
 <meta name="description" content="Explore curated Harsha DevSpace projects across web, cloud, and modern product development.">
 <meta name="author" content="Harsha DevSpace">
@@ -24,6 +35,40 @@
 <meta name="twitter:title" content="Harsha DevSpace | Projects">
 <meta name="twitter:description" content="See premium web and cloud projects by Harsha DevSpace.">
 <meta name="twitter:image" content="https://www.harshadevspace.me/assets/social-preview.png">
+<meta name="google-site-verification" content="PASTE_YOUR_GOOGLE_SEARCH_CONSOLE_TOKEN_HERE">
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Harsha DevSpace Projects",
+    "url": "https://www.harshadevspace.me/Projects.html",
+    "description": "A curated collection of live web and cloud projects by Harsha DevSpace.",
+    "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "HomeEase",
+                "url": "https://homeease-delta.vercel.app/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Chit Fund Management",
+                "url": "https://dhanam-chits.vercel.app/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Portfolio Website",
+                "url": "https://harsha-dev-space.vercel.app/"
+            }
+        ]
+    }
+}
+</script>
 
 <link rel="icon" type="image/jpeg" href="/profile.jpeg">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">

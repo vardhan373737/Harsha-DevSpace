@@ -3,6 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- SEO CHECKLIST (keep on every page)
+1) Unique <title> and meta description
+2) Canonical URL points to final public URL
+3) robots set to index,follow for public pages
+4) Open Graph + Twitter tags updated
+5) One primary <h1> in body content
+6) Images use meaningful alt text
+7) Internal links are crawlable
+8) JSON-LD schema when applicable
+9) Page URL included in sitemap.xml
+10) Validate in Google Search Console after deploy -->
 <title>Harsha DevSpace | Portfolio</title>
 <meta name="description" content="Harsha DevSpace portfolio featuring premium web experiences, cloud projects, and development services built with a modern visual style.">
 <meta name="keywords" content="Harsha DevSpace, portfolio, web developer, cloud projects, frontend developer, full stack developer">
@@ -26,6 +37,29 @@
 <meta name="twitter:title" content="Harsha DevSpace | Portfolio">
 <meta name="twitter:description" content="Premium portfolio showcasing projects, cloud expertise, and modern web development services.">
 <meta name="twitter:image" content="https://www.harshadevspace.me/assets/social-preview.png">
+<meta name="google-site-verification" content="PASTE_YOUR_GOOGLE_SEARCH_CONSOLE_TOKEN_HERE">
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Person",
+            "name": "Harsha DevSpace",
+            "url": "https://www.harshadevspace.me/",
+            "jobTitle": "Full Stack Developer",
+            "knowsAbout": ["Web Development", "Cloud Computing", "Frontend Development", "Backend Development"]
+        },
+        {
+            "@type": "WebSite",
+            "name": "Harsha DevSpace",
+            "url": "https://www.harshadevspace.me/",
+            "description": "Portfolio website showcasing projects, certifications, services, and contact information for Harsha DevSpace.",
+            "inLanguage": "en"
+        }
+    ]
+}
+</script>
 
 <link rel="icon" type="image/jpeg" href="/profile.jpeg">
 
