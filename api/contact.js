@@ -2,6 +2,12 @@ const rateBucket = new Map();
 
 const RATE_WINDOW_MS = 10 * 60 * 1000;
 const RATE_MAX_REQUESTS = 5;
+const BEST_FOR_OPTIONS = {
+  internship: "Internship Opportunity",
+  freelance: "Freelance Project",
+  fulltime: "Full-time Role",
+  collaboration: "Product Collaboration"
+};
 
 function getClientIp(req) {
   const forwarded = req.headers["x-forwarded-for"];
@@ -58,6 +64,8 @@ module.exports = async function handler(req, res) {
   const email = String(body.email || "").trim();
   const phone = String(body.phone || "").trim();
   const message = String(body.message || "").trim();
+  const bestFor = String(body.bestFor || "").trim().toLowerCase();
+  const bestForLabel = BEST_FOR_OPTIONS[bestFor] || "";
   const website = String(body.website || "").trim();
   const consent = Boolean(body.consent);
   const formLoadedAt = Number(body.formLoadedAt || 0);
@@ -82,8 +90,16 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: "Invalid email." });
   }
 
-  if (message.length < 10) {
-    return res.status(400).json({ error: "Message is too short." });
+  if (message.length < 25) {
+    return res.status(400).json({ error: "Please enter a message with at least 25 characters." });
+  }
+
+  if (message.length > 1200) {
+    return res.status(400).json({ error: "Please keep your message under 1200 characters." });
+  }
+
+  if (!bestForLabel) {
+    return res.status(400).json({ error: "Please select a valid inquiry purpose." });
   }
 
   if (phone && !/^[0-9+\-\s()]{7,20}$/.test(phone)) {
@@ -115,7 +131,9 @@ module.exports = async function handler(req, res) {
       name,
       email,
       phone,
-      message
+      message,
+      bestFor,
+      bestForLabel
     }
   };
 

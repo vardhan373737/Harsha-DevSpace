@@ -36,6 +36,20 @@
 <meta name="twitter:description" content="Background, skills, and mission behind Harsha DevSpace.">
 <meta name="twitter:image" content="https://www.harshadevspace.me/assets/social-preview.png">
 
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Harsha DevSpace",
+    "url": "https://www.harshadevspace.me/",
+    "sameAs": [
+        "https://github.com/vardhan373737",
+        "https://www.linkedin.com/in/harsha-vardhan-7a91a32a0",
+        "https://www.instagram.com/harsha.vardhan8824"
+    ]
+}
+</script>
+
 <link rel="icon" type="image/jpeg" href="/profile.jpeg">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -405,6 +419,109 @@ nav a.active::after{
 .fa-node-js{color:#46834f;}
 .fa-database{color:#8e6f32;}
 
+.authority-strip{
+    margin:0 48px 30px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:22px;
+    background:rgba(255,255,255,0.64);
+}
+
+.authority-strip h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2.1rem;
+    margin-bottom:8px;
+}
+
+.authority-strip h2 span{
+    color:var(--accent-deep);
+}
+
+.authority-strip > p{
+    color:var(--muted);
+    line-height:1.7;
+    margin-bottom:14px;
+}
+
+.authority-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:10px;
+}
+
+.authority-card{
+    border:1px solid rgba(143,102,50,0.28);
+    border-radius:12px;
+    padding:12px;
+    background:rgba(255,255,255,0.76);
+}
+
+.authority-card h3{
+    font-size:0.8rem;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    color:var(--accent-deep);
+    margin-bottom:6px;
+}
+
+.authority-card p{
+    color:var(--muted);
+    font-size:0.88rem;
+    line-height:1.58;
+}
+
+.site-cta{
+    margin:0 48px 56px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:20px 22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    background:rgba(255,255,255,0.62);
+}
+
+.site-cta p{
+    margin:0;
+    color:var(--muted);
+    line-height:1.7;
+}
+
+.site-cta p strong{
+    color:var(--accent-deep);
+}
+
+.site-cta-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.site-cta-link{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    border-radius:999px;
+    padding:11px 14px;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    font-weight:700;
+}
+
+.site-cta-link.primary{
+    background:linear-gradient(125deg,var(--accent),#a67635);
+    color:#fff;
+}
+
+.site-cta-link.ghost{
+    border:1px solid var(--line);
+    color:var(--ink);
+    background:rgba(255,255,255,0.72);
+}
+
 @media(max-width:1060px){
     .about-section{
         grid-template-columns:1fr;
@@ -447,6 +564,22 @@ nav a.active::after{
     .about-left,
     .about-right{
         padding:18px;
+    }
+
+    .site-cta{
+        margin:0 18px 30px;
+        padding:14px;
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .authority-strip{
+        margin:0 18px 20px;
+        padding:14px;
+    }
+
+    .authority-grid{
+        grid-template-columns:1fr;
     }
 
     .about-section{
@@ -630,6 +763,37 @@ nav a.active::after{
     </div>
 </aside>
 </div>
+</section>
+
+<section class="authority-strip" aria-label="Why work with me">
+    <h2>Why Work <span>With Me</span></h2>
+    <p>Execution quality, consistent communication, and practical ownership from planning to launch.</p>
+    <div class="authority-grid">
+        <article class="authority-card">
+            <h3>Delivery Speed</h3>
+            <p>Focused, milestone-based execution that keeps progress visible each week.</p>
+        </article>
+        <article class="authority-card">
+            <h3>Communication</h3>
+            <p>Clear updates, scope alignment, and feedback loops to avoid surprises.</p>
+        </article>
+        <article class="authority-card">
+            <h3>Stack Depth</h3>
+            <p>Hands-on with frontend UX, backend workflows, and cloud deployment basics.</p>
+        </article>
+        <article class="authority-card">
+            <h3>Ownership</h3>
+            <p>Treats each build like a product, not just a set of pages or code tasks.</p>
+        </article>
+    </div>
+</section>
+
+<section class="site-cta" aria-label="Collaboration call to action">
+    <p><strong>Open to opportunities.</strong> Available for internships, freelance projects, and full-time development roles.</p>
+    <div class="site-cta-actions">
+        <a class="site-cta-link primary" href="Harsha_Kodiganti_CV.pdf" download="Harsha_Kodiganti_CV.pdf"><i class="fa-solid fa-file-arrow-down"></i> Resume</a>
+        <a class="site-cta-link ghost" href="Contact.html"><i class="fa-solid fa-paper-plane"></i> Contact</a>
+    </div>
 </section>
 </div>
 

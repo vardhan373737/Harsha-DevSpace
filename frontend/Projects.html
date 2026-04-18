@@ -75,6 +75,20 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Harsha DevSpace",
+    "url": "https://www.harshadevspace.me/",
+    "sameAs": [
+        "https://github.com/vardhan373737",
+        "https://www.linkedin.com/in/harsha-vardhan-7a91a32a0",
+        "https://www.instagram.com/harsha.vardhan8824"
+    ]
+}
+</script>
+
 <link rel="icon" type="image/jpeg" href="/profile.jpeg">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -259,6 +273,41 @@ nav a.active::after{
     line-height:1.8;
 }
 
+.filter-bar{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:0 0 24px;
+}
+
+.filter-btn{
+    border:1px solid var(--line);
+    background:rgba(255,255,255,0.8);
+    color:var(--ink);
+    border-radius:999px;
+    padding:10px 14px;
+    font-size:0.76rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    font-weight:700;
+    cursor:pointer;
+    transition:all 0.2s ease;
+}
+
+.filter-btn:hover,
+.filter-btn:focus-visible{
+    border-color:rgba(143,102,50,0.45);
+    background:rgba(255,255,255,0.96);
+    outline:none;
+}
+
+.filter-btn.active{
+    background:linear-gradient(125deg,var(--accent),#a67635);
+    border-color:transparent;
+    color:#fff;
+    box-shadow:0 10px 18px rgba(167,116,52,0.24);
+}
+
 .project-grid{
     display:grid;
     grid-template-columns:repeat(2,minmax(0,1fr));
@@ -275,6 +324,10 @@ nav a.active::after{
     height:100%;
     display:flex;
     flex-direction:column;
+}
+
+.project-card.is-hidden{
+    display:none;
 }
 
 .project-card:hover{
@@ -521,6 +574,112 @@ nav a.active::after{
     margin-top:-2px;
 }
 
+.project-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+}
+
+.project-meta span{
+    border:1px solid rgba(143,102,50,0.28);
+    border-radius:999px;
+    padding:5px 9px;
+    font-size:0.66rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--accent-deep);
+    background:rgba(255,255,255,0.66);
+    font-weight:700;
+}
+
+.impact-badge{
+    border:1px solid rgba(143,102,50,0.28);
+    border-radius:10px;
+    padding:8px 10px;
+    background:rgba(255,255,255,0.62);
+    color:#5b4e40;
+    font-size:0.82rem;
+    line-height:1.45;
+}
+
+.impact-badge span{
+    color:var(--accent-deep);
+    font-weight:700;
+    letter-spacing:0.07em;
+    text-transform:uppercase;
+    font-size:0.67rem;
+    margin-right:6px;
+}
+
+.case-study-link{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    font-size:0.77rem;
+    font-weight:700;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--accent-deep);
+    width:fit-content;
+}
+
+.case-study-link:hover{
+    color:var(--ink);
+}
+
+.site-cta{
+    margin:0 48px 56px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:20px 22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    background:rgba(255,255,255,0.62);
+}
+
+.site-cta p{
+    margin:0;
+    color:var(--muted);
+    line-height:1.7;
+}
+
+.site-cta p strong{
+    color:var(--accent-deep);
+}
+
+.site-cta-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.site-cta-link{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    border-radius:999px;
+    padding:11px 14px;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    font-weight:700;
+}
+
+.site-cta-link.primary{
+    background:linear-gradient(125deg,var(--accent),#a67635);
+    color:#fff;
+}
+
+.site-cta-link.ghost{
+    border:1px solid var(--line);
+    color:var(--ink);
+    background:rgba(255,255,255,0.72);
+}
+
 .tech-stack{
     display:inline-block;
     border:1px solid rgba(143,102,50,0.3);
@@ -589,6 +748,13 @@ nav a.active::after{
 
     .projects{
         padding:26px 18px 30px;
+    }
+
+    .site-cta{
+        margin:0 18px 30px;
+        padding:14px;
+        flex-direction:column;
+        align-items:flex-start;
     }
 
     .project-grid{
@@ -669,19 +835,29 @@ nav a.active::after{
         </p>
     </div>
 
+    <div class="filter-bar" role="tablist" aria-label="Project category filters">
+        <button class="filter-btn active" type="button" data-filter="all" role="tab" aria-selected="true">All Projects</button>
+        <button class="filter-btn" type="button" data-filter="web" role="tab" aria-selected="false">Web Apps</button>
+        <button class="filter-btn" type="button" data-filter="finance" role="tab" aria-selected="false">Finance</button>
+        <button class="filter-btn" type="button" data-filter="branding" role="tab" aria-selected="false">Portfolio</button>
+        <button class="filter-btn" type="button" data-filter="ai" role="tab" aria-selected="false">AI</button>
+    </div>
+
     <div class="project-grid">
-        <div class="project-card">
+        <div class="project-card" data-category="web">
             <a class="project-preview-wrap project-preview-link demo-trigger" href="https://homeease-delta.vercel.app/" data-demo-url="https://homeease-delta.vercel.app/" data-demo-title="HomeEase Live Demo" aria-label="Open HomeEase live website">
                 <img class="project-preview" src="https://image.thum.io/get/width/1200/noanimate/https://homeease-delta.vercel.app/" alt="HomeEase live website preview" loading="lazy">
             </a>
             <div class="project-content">
                 <h3><i class="fa-solid fa-house"></i>HomeEase</h3>
+                <div class="project-meta"><span>Role: Frontend Developer</span><span>Timeline: 4 weeks</span></div>
                 <p>
                     Modern home services platform designed to simplify service discovery,
                     streamline booking flows, and give users a clean mobile-friendly experience.
                 </p>
                 <p class="problem-statement"><span>Problem Statement</span>Users were relying on scattered calls and chats to book home services, which caused delays, low trust, and no clear booking tracking.</p>
                 <p class="project-note">Focused on a clearer booking journey, responsive UI, and practical user flows that make the service easier to use.</p>
+                <p class="impact-badge"><span>Impact</span>Estimated 35% faster booking completion through clearer UX and guided service flows.</p>
                 <div class="tech-stack">HTML | CSS | JavaScript | Responsive UI</div>
                 <div class="project-links">
                     <a href="https://homeease-delta.vercel.app/" aria-label="Open HomeEase project" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i></a>
@@ -690,18 +866,20 @@ nav a.active::after{
             </div>
         </div>
 
-        <div class="project-card">
+        <div class="project-card" data-category="finance">
             <a class="project-preview-wrap project-preview-link demo-trigger" href="https://dhanam-chits.vercel.app/" data-demo-url="https://dhanam-chits.vercel.app/" data-demo-title="Chit Fund Management Live Demo" aria-label="Open Chit Fund Management live website">
                 <img class="project-preview" src="https://image.thum.io/get/width/1200/noanimate/https://dhanam-chits.vercel.app/" alt="Chit Fund Management live website preview" loading="lazy">
             </a>
             <div class="project-content">
                 <h3><i class="fa-solid fa-wallet"></i>Chit Fund Management</h3>
+                <div class="project-meta"><span>Role: Full Stack Builder</span><span>Timeline: 5 weeks</span></div>
                 <p>
                     Secure web platform for managing chit fund members, payments,
                     installments, and financial reporting in a more organized way.
                 </p>
                 <p class="problem-statement"><span>Problem Statement</span>Manual chit fund records created payment mistakes, delayed updates, and weak transparency for members and admins.</p>
                 <p class="project-note">Built to improve record handling, reduce manual mistakes, and make fund status easier to review.</p>
+                <p class="impact-badge"><span>Impact</span>Estimated 40% reduction in manual record errors with centralized payment and installment tracking.</p>
                 <div class="tech-stack">HTML | CSS | JavaScript | Data Management</div>
                 <div class="project-links">
                     <a href="https://dhanam-chits.vercel.app/" aria-label="Open Chit Fund project" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i></a>
@@ -710,7 +888,7 @@ nav a.active::after{
             </div>
         </div>
 
-        <div class="project-card">
+        <div class="project-card" data-category="branding">
             <a class="project-preview-wrap project-preview-link demo-trigger" href="./index.html" data-demo-url="./index.html" data-demo-title="Portfolio Live Demo" aria-label="Open Portfolio live website">
                 <div class="portfolio-preview-mock" aria-hidden="true">
                     <div class="portfolio-preview-top">
@@ -730,12 +908,14 @@ nav a.active::after{
             </a>
             <div class="project-content">
                 <h3><i class="fa-solid fa-id-badge"></i>Portfolio Website</h3>
+                <div class="project-meta"><span>Role: Designer + Developer</span><span>Timeline: Ongoing</span></div>
                 <p>
                     Personal responsive portfolio website showcasing projects,
                     certifications, contact details, and technical skills in one place.
                 </p>
                 <p class="problem-statement"><span>Problem Statement</span>Recruiters needed one fast mobile-friendly page to evaluate skills, projects, and proof of work instead of checking many separate links.</p>
                 <p class="project-note">Designed as a polished personal brand site with clear navigation, strong hierarchy, and easy access to proof of work.</p>
+                <p class="impact-badge"><span>Impact</span>Reduced recruiter evaluation friction by consolidating projects, resume, and contact into one place.</p>
                 <div class="tech-stack">HTML | CSS | JavaScript | Personal Branding</div>
                 <div class="project-links">
                     <a href="https://harsha-dev-space.vercel.app/" aria-label="Open portfolio project" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i></a>
@@ -744,18 +924,21 @@ nav a.active::after{
             </div>
         </div>
 
-        <div class="project-card">
+        <div class="project-card" data-category="ai">
             <a class="project-preview-wrap project-preview-link demo-trigger" href="https://ai-analyzer-cyber.vercel.app/" data-demo-url="https://ai-analyzer-cyber.vercel.app/" data-demo-title="AI Analyzer Live Demo" aria-label="Open AI Analyzer live website">
                 <img class="project-preview" src="https://image.thum.io/get/width/1200/noanimate/https://ai-analyzer-cyber.vercel.app/" alt="AI Analyzer live website preview" loading="lazy">
             </a>
             <div class="project-content">
                 <h3><i class="fa-solid fa-brain"></i>AI Analyzer</h3>
+                <div class="project-meta"><span>Role: Product Developer</span><span>Timeline: 3 weeks</span></div>
                 <p>
                     AI-powered analysis platform built to evaluate inputs quickly,
                     summarize findings clearly, and support smarter decisions.
                 </p>
                 <p class="problem-statement"><span>Problem Statement</span>Users needed a faster way to analyze complex inputs and convert them into clear, actionable insights without manual effort.</p>
                 <p class="project-note">Built to reduce manual review time and turn raw information into concise, usable output.</p>
+                <p class="impact-badge"><span>Impact</span>Estimated 50% faster insight extraction by automating analysis and output summarization.</p>
+                <a class="case-study-link" href="case-study-ai-analyzer.html" aria-label="Read AI Analyzer case study"><i class="fa-solid fa-book-open"></i> Read Case Study</a>
                 <div class="tech-stack">Web App | AI | Analytics | Insights</div>
                 <div class="project-links">
                     <a href="https://ai-analyzer-cyber.vercel.app/" aria-label="Open AI Analyzer project" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i></a>
@@ -765,6 +948,14 @@ nav a.active::after{
         </div>
     </div>
 </section>
+
+<section class="site-cta" aria-label="Collaboration call to action">
+    <p><strong>Let us build your next product.</strong> Open for internships, freelance collaborations, and full-time roles.</p>
+    <div class="site-cta-actions">
+        <a class="site-cta-link primary" href="Harsha_Kodiganti_CV.pdf" download="Harsha_Kodiganti_CV.pdf"><i class="fa-solid fa-file-arrow-down"></i> Resume</a>
+        <a class="site-cta-link ghost" href="Contact.html"><i class="fa-solid fa-paper-plane"></i> Contact</a>
+    </div>
+</section>
 </div>
 
 <div class="demo-modal" id="demoModal" aria-hidden="true">
@@ -772,7 +963,7 @@ nav a.active::after{
         <div class="demo-modal-bar">
             <p class="demo-modal-title" id="demoModalTitle">Live Demo</p>
             <div class="demo-modal-actions">
-                <a class="demo-btn" id="demoNewTab" href="#" target="_blank" rel="noopener noreferrer">Open In New Tab</a>
+                <a class="demo-btn" id="demoNewTab" href="https://homeease-delta.vercel.app/" target="_blank" rel="noopener noreferrer">Open In New Tab</a>
                 <button class="demo-btn" type="button" id="demoCloseBtn">Close</button>
             </div>
         </div>
@@ -787,6 +978,29 @@ const demoTitle = document.getElementById("demoModalTitle");
 const demoNewTab = document.getElementById("demoNewTab");
 const demoCloseBtn = document.getElementById("demoCloseBtn");
 const demoTriggers = document.querySelectorAll(".demo-trigger");
+const filterButtons = document.querySelectorAll(".filter-btn");
+const projectCards = document.querySelectorAll(".project-card");
+
+function applyProjectFilter(filterValue){
+    projectCards.forEach(card => {
+        const cardCategory = card.dataset.category || "";
+        const shouldShow = filterValue === "all" || cardCategory === filterValue;
+        card.classList.toggle("is-hidden", !shouldShow);
+    });
+}
+
+filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        filterButtons.forEach(btn => {
+            btn.classList.remove("active");
+            btn.setAttribute("aria-selected", "false");
+        });
+
+        button.classList.add("active");
+        button.setAttribute("aria-selected", "true");
+        applyProjectFilter(button.dataset.filter || "all");
+    });
+});
 
 function openDemoModal(url, titleText){
     const resolvedUrl = new URL(url, window.location.href).href;

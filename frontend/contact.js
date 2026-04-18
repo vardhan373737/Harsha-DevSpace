@@ -13,6 +13,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const loadedAtInput = document.getElementById("formLoadedAt");
     const honeypotInput = document.getElementById("website");
     const consentInput = document.getElementById("consent");
+    const bestForInput = document.getElementById("bestFor");
+    const messageInput = document.getElementById("message");
+
+    const prefillTemplates = {
+        internship: "Hi Harsha, I am reaching out regarding an internship opportunity.\\nRole details:\\nStart date:\\nExpected responsibilities:\\n",
+        freelance: "Hi Harsha, I would like to discuss a freelance project.\\nProject goal:\\nTimeline:\\nBudget range:\\n",
+        fulltime: "Hi Harsha, I am contacting you about a full-time role.\\nRole title:\\nCompany:\\nTech stack expectations:\\n",
+        collaboration: "Hi Harsha, I would like to explore a collaboration.\\nProduct idea:\\nScope of collaboration:\\nPreferred timeline:\\n"
+    };
+
+    const bestForLabels = {
+        internship: "Internship Opportunity",
+        freelance: "Freelance Project",
+        fulltime: "Full-time Role",
+        collaboration: "Product Collaboration"
+    };
+
+    let lastAppliedTemplate = "";
 
     loadedAtInput.value = String(Date.now());
     const isLocalDev = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
@@ -27,6 +45,23 @@ document.addEventListener("DOMContentLoaded", function () {
         errorMsg.style.display = "none";
         errorMsg.textContent = "";
         successMsg.style.display = "none";
+    }
+
+    function looksSpammy(message) {
+        const lowered = message.toLowerCase();
+        const spamTerms = ["crypto", "forex", "casino", "betting", "loan", "airdrop", "http://", "https://", "whatsapp"];
+        let termHits = 0;
+
+        spamTerms.forEach(function (term) {
+            if (lowered.indexOf(term) !== -1) {
+                termHits += 1;
+            }
+        });
+
+        const urlMatches = message.match(/https?:\/\//gi);
+        const urlCount = urlMatches ? urlMatches.length : 0;
+
+        return termHits >= 2 || urlCount > 1;
     }
 
     async function sendViaBackend(payload) {
@@ -60,6 +95,26 @@ document.addEventListener("DOMContentLoaded", function () {
         return emailjs.send("service_4ytb2zm", "template_wffdkjf", params);
     }
 
+    if (bestForInput && messageInput) {
+        bestForInput.addEventListener("change", function () {
+            const selectedValue = bestForInput.value;
+            const template = prefillTemplates[selectedValue] || "";
+
+            if (!template) {
+                lastAppliedTemplate = "";
+                return;
+            }
+
+            const currentMessage = messageInput.value.trim();
+            const canReplace = currentMessage === "" || currentMessage === lastAppliedTemplate.trim();
+
+            if (canReplace) {
+                messageInput.value = template;
+                lastAppliedTemplate = template;
+            }
+        });
+    }
+
     form.addEventListener("submit", async function (e) {
         e.preventDefault();
 
@@ -69,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const loadedAt = Number(loadedAtInput.value || now);
         const secondsOnForm = (now - loadedAt) / 1000;
         const lastSubmitAt = Number(localStorage.getItem("contact_last_submit") || 0);
-        const cooldownMs = 30 * 1000;
+        const cooldownMs = 60 * 1000;
 
         if (honeypotInput.value.trim() !== "") {
             showError("Submission blocked.");
@@ -89,15 +144,32 @@ document.addEventListener("DOMContentLoaded", function () {
         const nameValue = document.getElementById("name").value.trim();
         const emailValue = document.getElementById("email").value.trim();
         const phoneValue = document.getElementById("phone").value.trim();
-        const messageValue = document.getElementById("message").value.trim();
+        const messageValue = messageInput.value.trim();
+        const bestForValue = bestForInput ? bestForInput.value : "";
+        const bestForLabel = bestForLabels[bestForValue] || "";
+
+        if (!bestForValue || !bestForLabel) {
+            showError("Please select what this inquiry is best for.");
+            return;
+        }
 
         if (nameValue.length < 2) {
             showError("Please enter a valid name.");
             return;
         }
 
-        if (messageValue.length < 10) {
-            showError("Please enter a message with at least 10 characters.");
+        if (messageValue.length < 25) {
+            showError("Please enter a message with at least 25 characters.");
+            return;
+        }
+
+        if (messageValue.length > 1200) {
+            showError("Please keep your message under 1200 characters.");
+            return;
+        }
+
+        if (looksSpammy(messageValue)) {
+            showError("Please remove promotional or spam-like content and try again.");
             return;
         }
 
@@ -124,7 +196,9 @@ document.addEventListener("DOMContentLoaded", function () {
             name: nameValue,
             email: emailValue,
             phone: phoneValue,
-            message: messageValue
+            message: messageValue,
+            bestFor: bestForValue,
+            bestForLabel: bestForLabel
         };
 
         try {

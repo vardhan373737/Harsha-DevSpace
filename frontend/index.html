@@ -47,7 +47,12 @@
             "name": "Harsha DevSpace",
             "url": "https://www.harshadevspace.me/",
             "jobTitle": "Full Stack Developer",
-            "knowsAbout": ["Web Development", "Cloud Computing", "Frontend Development", "Backend Development"]
+            "knowsAbout": ["Web Development", "Cloud Computing", "Frontend Development", "Backend Development"],
+            "sameAs": [
+                "https://github.com/vardhan373737",
+                "https://www.linkedin.com/in/harsha-vardhan-7a91a32a0",
+                "https://www.instagram.com/harsha.vardhan8824"
+            ]
         },
         {
             "@type": "WebSite",
@@ -404,6 +409,34 @@ nav a.active::after{
     margin-top:28px;
 }
 
+.site-cta{
+    margin:0 48px 56px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:20px 22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    background:rgba(255,255,255,0.62);
+}
+
+.site-cta p{
+    margin:0;
+    color:var(--muted);
+    line-height:1.7;
+}
+
+.site-cta p strong{
+    color:var(--accent-deep);
+}
+
+.site-cta-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
 .stat-card{
     border:1px solid var(--line);
     border-radius:16px;
@@ -425,6 +458,55 @@ nav a.active::after{
     text-transform:uppercase;
     color:var(--muted);
     line-height:1.5;
+}
+
+.testimonials{
+    margin:0 48px 34px;
+}
+
+.testimonials h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2.15rem;
+    margin-bottom:6px;
+}
+
+.testimonials p{
+    color:var(--muted);
+    line-height:1.7;
+    margin-bottom:16px;
+}
+
+.testimonial-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:14px;
+}
+
+.testimonial-card{
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:14px;
+    background:rgba(255,255,255,0.62);
+}
+
+.testimonial-card blockquote{
+    margin:0 0 10px;
+    color:#584c3f;
+    line-height:1.62;
+    font-size:0.92rem;
+}
+
+.testimonial-card cite{
+    color:var(--accent-deep);
+    font-style:normal;
+    font-size:0.78rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    font-weight:700;
+}
+
+.mobile-sticky-cta{
+    display:none;
 }
 
 @media(max-width:1060px){
@@ -486,6 +568,21 @@ nav a.active::after{
         padding:26px 18px 30px;
     }
 
+    .testimonials{
+        margin:0 18px 22px;
+    }
+
+    .testimonial-grid{
+        grid-template-columns:1fr;
+    }
+
+    .site-cta{
+        margin:0 18px 30px;
+        padding:14px;
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
     .hero-text h3{
         font-size:1.04rem;
     }
@@ -497,6 +594,49 @@ nav a.active::after{
 
     .stats{
         grid-template-columns:1fr;
+    }
+
+    .mobile-sticky-cta{
+        position:fixed;
+        left:10px;
+        right:10px;
+        bottom:10px;
+        z-index:1200;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:8px;
+        padding:8px;
+        border:1px solid var(--line);
+        border-radius:14px;
+        background:rgba(255,250,240,0.96);
+        backdrop-filter:blur(8px);
+        box-shadow:0 8px 20px rgba(91,67,35,0.2);
+    }
+
+    .mobile-sticky-cta a{
+        text-decoration:none;
+        border-radius:999px;
+        padding:10px 12px;
+        text-align:center;
+        font-size:0.74rem;
+        letter-spacing:0.06em;
+        text-transform:uppercase;
+        font-weight:700;
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        gap:6px;
+    }
+
+    .mobile-sticky-cta .primary{
+        background:linear-gradient(125deg,var(--accent),#a67635);
+        color:#fff;
+    }
+
+    .mobile-sticky-cta .ghost{
+        border:1px solid var(--line);
+        color:var(--ink);
+        background:rgba(255,255,255,0.8);
     }
 }
 </style>
@@ -575,6 +715,38 @@ nav a.active::after{
             </div>
         </div>
     </section>
+
+    <section class="testimonials" aria-label="Testimonials and feedback">
+        <h2>What People Say</h2>
+        <p>Feedback from peers and mentors on execution quality, ownership, and delivery.</p>
+        <div class="testimonial-grid">
+            <article class="testimonial-card">
+                <blockquote>"Harsha consistently turns ideas into usable interfaces quickly while keeping the UI clean and structured."</blockquote>
+                <cite>Team Collaborator</cite>
+            </article>
+            <article class="testimonial-card">
+                <blockquote>"Strong ownership mindset. He improves both design clarity and implementation quality in the same iteration."</blockquote>
+                <cite>Project Mentor</cite>
+            </article>
+            <article class="testimonial-card">
+                <blockquote>"Reliable in delivery and detail oriented, especially when refining portfolio and product presentation."</blockquote>
+                <cite>Peer Developer</cite>
+            </article>
+        </div>
+    </section>
+
+    <section class="site-cta" aria-label="Collaboration call to action">
+        <p><strong>Open to new opportunities.</strong> Available for internships, freelance projects, and full-time roles.</p>
+        <div class="site-cta-actions">
+            <a href="Harsha_Kodiganti_CV.pdf" download="Harsha_Kodiganti_CV.pdf" class="btn btn-primary"><i class="fa-solid fa-file-arrow-down"></i> Resume</a>
+            <a href="Contact.html" class="btn btn-ghost"><i class="fa-solid fa-paper-plane"></i> Contact</a>
+        </div>
+    </section>
+</div>
+
+<div class="mobile-sticky-cta" aria-label="Quick mobile actions">
+    <a class="primary" href="Harsha_Kodiganti_CV.pdf" download="Harsha_Kodiganti_CV.pdf"><i class="fa-solid fa-file-arrow-down"></i> Resume</a>
+    <a class="ghost" href="Contact.html"><i class="fa-solid fa-paper-plane"></i> Contact</a>
 </div>
 
 <script>

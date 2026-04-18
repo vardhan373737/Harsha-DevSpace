@@ -36,6 +36,20 @@
 <meta name="twitter:description" content="Browse certifications and proof of expertise by Harsha DevSpace.">
 <meta name="twitter:image" content="https://www.harshadevspace.me/assets/social-preview.png">
 
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Harsha DevSpace",
+    "url": "https://www.harshadevspace.me/",
+    "sameAs": [
+        "https://github.com/vardhan373737",
+        "https://www.linkedin.com/in/harsha-vardhan-7a91a32a0",
+        "https://www.instagram.com/harsha.vardhan8824"
+    ]
+}
+</script>
+
 <link rel="icon" type="image/jpeg" href="/profile.jpeg">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -252,6 +266,25 @@ nav a.active::after{
     font-size:0.93rem;
 }
 
+.cert-tags{
+    margin-top:10px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+}
+
+.cert-tags span{
+    border:1px solid rgba(143,102,50,0.25);
+    border-radius:999px;
+    padding:4px 8px;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--accent-deep);
+    background:rgba(255,255,255,0.72);
+    font-weight:700;
+}
+
 .modal{
     display:none;
     position:fixed;
@@ -305,6 +338,58 @@ nav a.active::after{
     color:#fff;
 }
 
+.site-cta{
+    margin:0 48px 56px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:20px 22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    background:rgba(255,255,255,0.62);
+}
+
+.site-cta p{
+    margin:0;
+    color:var(--muted);
+    line-height:1.7;
+}
+
+.site-cta p strong{
+    color:var(--accent-deep);
+}
+
+.site-cta-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.site-cta-link{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    border-radius:999px;
+    padding:11px 14px;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    font-weight:700;
+}
+
+.site-cta-link.primary{
+    background:linear-gradient(125deg,var(--accent),#a67635);
+    color:#fff;
+}
+
+.site-cta-link.ghost{
+    border:1px solid var(--line);
+    color:var(--ink);
+    background:rgba(255,255,255,0.72);
+}
+
 @media(max-width:1060px){
     .cert-grid{
         grid-template-columns:repeat(2,minmax(0,1fr));
@@ -335,6 +420,13 @@ nav a.active::after{
 
     .certificates-section{
         padding:26px 18px 30px;
+    }
+
+    .site-cta{
+        margin:0 18px 30px;
+        padding:14px;
+        flex-direction:column;
+        align-items:flex-start;
     }
 
     .cert-grid{
@@ -376,25 +468,37 @@ nav a.active::after{
             <i class="fab fa-aws"></i>
             <h3>AWS Cloud Practitioner</h3>
             <p>Amazon Web Services | 2025</p>
+            <div class="cert-tags"><span>Cloud</span><span>Fundamentals</span></div>
         </button>
 
         <button type="button" class="cert-card" data-image="rpa.png" data-verify="https://certificates.automationanywhere.com/a8c95a99-30eb-454c-83c8-916ccf0f513e#acc.4023akc5" aria-label="View RPA certificate">
             <i class="fas fa-robot"></i>
             <h3>RPA Certification</h3>
             <p>Automation Anywhere | 2024</p>
+            <div class="cert-tags"><span>Automation</span><span>Workflows</span></div>
         </button>
 
         <button type="button" class="cert-card" data-image="mongodb.png" data-verify="https://www.credly.com/badges/50bc955a-2a6c-4836-bbc6-6f7f0684ea75" aria-label="View MongoDB Developer certificate">
             <i class="fas fa-database"></i>
             <h3>MongoDB Developer</h3>
             <p>MongoDB University | 2024</p>
+            <div class="cert-tags"><span>Database</span><span>Backend</span></div>
         </button>
 
         <button type="button" class="cert-card" data-image="awsai.png" data-verify="https://cp.certmetrics.com/amazon/en/public/verify/credential/919830e30e084b77bf7f31657f58ea17" aria-label="View AWS AI certificate">
             <i class="fas fa-brain"></i>
             <h3>AWS AI Certification</h3>
             <p>Amazon Web Services | 2025</p>
+            <div class="cert-tags"><span>AI</span><span>Cloud</span></div>
         </button>
+    </div>
+</section>
+
+<section class="site-cta" aria-label="Collaboration call to action">
+    <p><strong>Validated skills, ready to contribute.</strong> Open to internships, freelance assignments, and full-time opportunities.</p>
+    <div class="site-cta-actions">
+        <a class="site-cta-link primary" href="Harsha_Kodiganti_CV.pdf" download="Harsha_Kodiganti_CV.pdf"><i class="fa-solid fa-file-arrow-down"></i> Resume</a>
+        <a class="site-cta-link ghost" href="Contact.html"><i class="fa-solid fa-paper-plane"></i> Contact</a>
     </div>
 </section>
 </div>
@@ -404,7 +508,7 @@ nav a.active::after{
         <h2 id="certificateModalTitle" class="sr-only">Certificate Preview</h2>
         <button type="button" class="close-btn" id="closeModalBtn" aria-label="Close certificate modal">&times;</button>
         <img id="modalImage" alt="Certificate preview">
-        <a id="verifyBtn" href="#" target="_blank" rel="noopener noreferrer" class="verify-btn">Verify Certificate</a>
+        <a id="verifyBtn" href="https://cp.certmetrics.com/amazon/en/public/verify/credential/9347e691bd9a47f29ce59e361a03a9f3" target="_blank" rel="noopener noreferrer" class="verify-btn">Verify Certificate</a>
     </div>
 </div>
 

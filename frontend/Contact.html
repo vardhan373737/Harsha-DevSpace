@@ -36,6 +36,20 @@
 <meta name="twitter:description" content="Reach out to Harsha DevSpace for premium web and cloud work.">
 <meta name="twitter:image" content="https://www.harshadevspace.me/assets/social-preview.png">
 
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Harsha DevSpace",
+    "url": "https://www.harshadevspace.me/",
+    "sameAs": [
+        "https://github.com/vardhan373737",
+        "https://www.linkedin.com/in/harsha-vardhan-7a91a32a0",
+        "https://www.instagram.com/harsha.vardhan8824"
+    ]
+}
+</script>
+
 <link rel="icon" type="image/jpeg" href="/profile.jpeg">
 
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
@@ -290,7 +304,8 @@ nav a.active::after{
 }
 
 .form-group input,
-.form-group textarea{
+.form-group textarea,
+.form-group select{
     width:100%;
     border:1px solid var(--line);
     border-radius:12px;
@@ -303,10 +318,27 @@ nav a.active::after{
 }
 
 .form-group input:focus,
-.form-group textarea:focus{
+.form-group textarea:focus,
+.form-group select:focus{
     outline:none;
     border-color:var(--accent);
     box-shadow:0 0 0 4px rgba(184,136,70,0.18);
+}
+
+.form-group select{
+    appearance:none;
+    background-image:linear-gradient(45deg,transparent 50%,var(--accent-deep) 50%),linear-gradient(135deg,var(--accent-deep) 50%,transparent 50%);
+    background-position:calc(100% - 18px) calc(1em + 6px),calc(100% - 13px) calc(1em + 6px);
+    background-size:5px 5px,5px 5px;
+    background-repeat:no-repeat;
+    padding-right:34px;
+}
+
+.form-tip{
+    margin-top:6px;
+    color:var(--muted);
+    font-size:0.82rem;
+    line-height:1.5;
 }
 
 .form-group textarea{
@@ -378,6 +410,37 @@ nav a.active::after{
     margin-top:2px;
 }
 
+.contact-helper{
+    margin-top:14px;
+    border:1px dashed rgba(143,102,50,0.35);
+    border-radius:12px;
+    padding:12px;
+    background:rgba(255,255,255,0.55);
+}
+
+.contact-helper h3{
+    font-size:0.88rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--accent-deep);
+    margin-bottom:6px;
+}
+
+.contact-helper p{
+    margin:0 0 8px;
+    color:var(--muted);
+    font-size:0.88rem;
+    line-height:1.6;
+}
+
+.contact-helper ul{
+    margin:0;
+    color:var(--muted);
+    font-size:0.86rem;
+    line-height:1.6;
+    padding-left:18px;
+}
+
 .quick-links{
     display:flex;
     flex-wrap:wrap;
@@ -405,6 +468,109 @@ nav a.active::after{
     transform:translateY(-2px);
     background:var(--accent);
     color:#fff;
+}
+
+.faq-section{
+    margin:0 48px 46px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:24px 24px 14px;
+    background:rgba(255,255,255,0.62);
+}
+
+.faq-section h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(2rem,3vw,2.5rem);
+    margin-bottom:6px;
+}
+
+.faq-section h2 span{
+    color:var(--accent-deep);
+}
+
+.faq-section > p{
+    color:var(--muted);
+    line-height:1.7;
+    margin-bottom:18px;
+}
+
+.faq-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+}
+
+.faq-item{
+    border:1px solid rgba(143,102,50,0.3);
+    border-radius:12px;
+    background:rgba(255,255,255,0.72);
+    padding:12px 14px;
+}
+
+.faq-item summary{
+    cursor:pointer;
+    font-weight:700;
+    color:var(--ink);
+    line-height:1.5;
+}
+
+.faq-item p{
+    margin:9px 0 0;
+    color:var(--muted);
+    line-height:1.65;
+    font-size:0.92rem;
+}
+
+.site-cta{
+    margin:0 48px 56px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:20px 22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    background:rgba(255,255,255,0.62);
+}
+
+.site-cta p{
+    margin:0;
+    color:var(--muted);
+    line-height:1.7;
+}
+
+.site-cta p strong{
+    color:var(--accent-deep);
+}
+
+.site-cta-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.site-cta-link{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    border-radius:999px;
+    padding:11px 14px;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    font-weight:700;
+}
+
+.site-cta-link.primary{
+    background:linear-gradient(125deg,var(--accent),#a67635);
+    color:#fff;
+}
+
+.site-cta-link.ghost{
+    border:1px solid var(--line);
+    color:var(--ink);
+    background:rgba(255,255,255,0.72);
 }
 
 @media(max-width:1060px){
@@ -439,6 +605,22 @@ nav a.active::after{
     .contact-left,
     .contact-right{
         padding:18px;
+    }
+
+    .site-cta{
+        margin:0 18px 30px;
+        padding:14px;
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .faq-section{
+        margin:0 18px 24px;
+        padding:16px 16px 10px;
+    }
+
+    .faq-grid{
+        grid-template-columns:1fr;
     }
 
     .contact-section{
@@ -532,6 +714,18 @@ nav a.active::after{
         </div>
 
         <div class="form-group">
+            <label for="bestFor" class="sr-only">Best For</label>
+            <select id="bestFor" name="bestFor" aria-label="What opportunity is this for?" required>
+                <option value="" selected>Select Purpose (Best For)</option>
+                <option value="internship">Internship Opportunity</option>
+                <option value="freelance">Freelance Project</option>
+                <option value="fulltime">Full-time Role</option>
+                <option value="collaboration">Product Collaboration</option>
+            </select>
+            <p class="form-tip">Selecting a purpose auto-generates a helpful starter in your message box.</p>
+        </div>
+
+        <div class="form-group">
             <label for="message" class="sr-only">Your Message</label>
             <textarea id="message" name="message" placeholder="Your Message" required></textarea>
         </div>
@@ -552,6 +746,16 @@ nav a.active::after{
             </label>
         </div>
 
+        <div class="contact-helper" aria-label="Contact form helper">
+            <h3>Typical Reply Time</h3>
+            <p>I usually reply within 24 hours. To get a faster and more helpful response, include:</p>
+            <ul>
+                <li>Your goal and project type (portfolio, web app, landing page, etc.)</li>
+                <li>Expected timeline and preferred start date</li>
+                <li>Any reference websites or style preferences</li>
+            </ul>
+        </div>
+
         <div class="success-message" id="successMsg" role="status" aria-live="polite">
             Message Sent Successfully!
         </div>
@@ -559,6 +763,37 @@ nav a.active::after{
         <div class="error-message" id="errorMsg" role="alert" aria-live="assertive"></div>
     </form>
 </div>
+</section>
+
+<section class="faq-section" aria-label="Frequently asked questions">
+    <h2>Quick <span>FAQ</span></h2>
+    <p>Common questions before starting a new project together.</p>
+    <div class="faq-grid">
+        <details class="faq-item">
+            <summary>What kind of projects do you usually take?</summary>
+            <p>I work on portfolio websites, landing pages, and practical web app interfaces with a strong focus on clean UX and responsive design.</p>
+        </details>
+        <details class="faq-item">
+            <summary>How soon can you start after discussion?</summary>
+            <p>Most projects can start within 2-5 days depending on scope, clarity of requirements, and current workload.</p>
+        </details>
+        <details class="faq-item">
+            <summary>Do you handle both design and development?</summary>
+            <p>Yes. I can handle UI design direction and frontend implementation so the final result feels consistent from concept to launch.</p>
+        </details>
+        <details class="faq-item">
+            <summary>What do you need from me to begin?</summary>
+            <p>Share your goals, timeline, target audience, and a few style references. This helps finalize scope and deliver faster.</p>
+        </details>
+    </div>
+</section>
+
+<section class="site-cta" aria-label="Collaboration call to action">
+    <p><strong>Let us connect.</strong> Open to internships, freelance projects, and full-time development opportunities.</p>
+    <div class="site-cta-actions">
+        <a class="site-cta-link primary" href="Harsha_Kodiganti_CV.pdf" download="Harsha_Kodiganti_CV.pdf"><i class="fa-solid fa-file-arrow-down"></i> Resume</a>
+        <a class="site-cta-link ghost" href="Projects.html"><i class="fa-solid fa-briefcase"></i> Projects</a>
+    </div>
 </section>
 </div>
 

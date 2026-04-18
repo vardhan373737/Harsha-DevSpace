@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Analyzer Case Study | Harsha DevSpace</title>
+<meta name="description" content="Deep dive case study of AI Analyzer: problem, approach, architecture, and measurable outcomes.">
+<meta name="author" content="Harsha DevSpace">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#b88846">
+<link rel="canonical" href="https://www.harshadevspace.me/case-study-ai-analyzer.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Harsha DevSpace">
+<meta property="og:title" content="AI Analyzer Case Study | Harsha DevSpace">
+<meta property="og:description" content="Explore the AI Analyzer case study: product goal, architecture decisions, and measurable results.">
+<meta property="og:url" content="https://www.harshadevspace.me/case-study-ai-analyzer.html">
+<meta property="og:image" content="https://www.harshadevspace.me/assets/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AI Analyzer case study preview">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Analyzer Case Study | Harsha DevSpace">
+<meta name="twitter:description" content="Architecture, decisions, and impact breakdown for the AI Analyzer product.">
+<meta name="twitter:image" content="https://www.harshadevspace.me/assets/social-preview.png">
+
+<link rel="icon" type="image/jpeg" href="/profile.jpeg">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+    --bg:#f7f2e8;
+    --surface:#fffaf0;
+    --ink:#1f1a14;
+    --muted:#6e6253;
+    --accent:#b88846;
+    --accent-deep:#8f6632;
+    --line:rgba(143,102,50,0.22);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    font-family:'Plus Jakarta Sans',sans-serif;
+    color:var(--ink);
+    min-height:100vh;
+    background:radial-gradient(circle at 10% 12%,#fff8eb 0,#f5ecdd 38%,#f1e5d2 100%);
+    overflow-x:hidden;
+}
+
+.page-shell{
+    width:min(1100px,92%);
+    margin:22px auto;
+    border:1px solid var(--line);
+    border-radius:28px;
+    background:linear-gradient(140deg,rgba(255,250,240,0.95),rgba(252,245,233,0.9));
+    box-shadow:0 25px 60px rgba(91,67,35,0.18);
+    overflow:hidden;
+}
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:22px 48px;
+    border-bottom:1px solid var(--line);
+}
+
+.logo{display:flex;align-items:center;gap:14px;}
+.logo img{width:56px;height:56px;border-radius:16px;object-fit:cover;border:1px solid var(--line);}
+.logo h2{font-size:1.08rem;letter-spacing:0.11em;text-transform:uppercase;font-weight:700;}
+
+nav{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:22px;}
+nav a{text-decoration:none;color:var(--ink);font-size:0.93rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;}
+
+.case-study{padding:52px 48px 60px;display:grid;gap:18px;}
+
+.eyebrow{font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);}
+
+h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(2.4rem,4.6vw,3.5rem);
+    line-height:1;
+}
+
+h1 span{color:var(--accent-deep);}
+
+.lead{color:var(--muted);line-height:1.85;max-width:850px;}
+
+.quick-metrics{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:12px;
+}
+
+.metric{
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:14px;
+    background:rgba(255,255,255,0.65);
+}
+
+.metric h3{font-size:1.3rem;color:var(--accent-deep);margin-bottom:4px;}
+.metric p{color:var(--muted);font-size:0.86rem;text-transform:uppercase;letter-spacing:0.08em;}
+
+.section{
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:18px;
+    background:rgba(255,255,255,0.62);
+}
+
+.section h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.8rem;
+    margin-bottom:8px;
+}
+
+.section p{color:#5b4e40;line-height:1.75;}
+
+.tech-depth{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:12px;
+}
+
+.depth-card{
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:14px;
+    background:rgba(255,255,255,0.68);
+}
+
+.depth-card h3{
+    font-size:0.86rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--accent-deep);
+    margin-bottom:8px;
+}
+
+.depth-card p{font-size:0.92rem;line-height:1.65;color:#5b4e40;}
+
+.points{margin-top:10px;display:grid;gap:8px;color:#5b4e40;}
+.points li{margin-left:18px;line-height:1.6;}
+
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    border-radius:999px;
+    padding:11px 14px;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    font-weight:700;
+}
+
+.btn-primary{background:linear-gradient(125deg,var(--accent),#a67635);color:#fff;}
+.btn-ghost{border:1px solid var(--line);color:var(--ink);background:rgba(255,255,255,0.72);}
+
+@media(max-width:820px){
+    header{flex-direction:column;gap:14px;padding:18px;}
+    nav{justify-content:center;gap:14px;}
+    nav a{font-size:0.78rem;}
+    .case-study{padding:26px 18px 30px;}
+    .quick-metrics{grid-template-columns:1fr;}
+    .tech-depth{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="page-shell">
+    <header>
+        <div class="logo">
+            <img src="profile.jpeg" alt="Harsha DevSpace logo">
+            <h2>Harsha DevSpace</h2>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="Projects.html">Projects</a>
+            <a href="certificates.html">Certificates</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main class="case-study">
+        <p class="eyebrow">Case Study</p>
+        <h1>AI Analyzer <span>Deep Dive</span></h1>
+        <p class="lead">
+            AI Analyzer was built to convert complex user inputs into concise, decision-ready insights with minimal manual effort.
+            The goal was to reduce analysis time while improving clarity and consistency of outputs.
+        </p>
+
+        <section class="quick-metrics" aria-label="Case study quick metrics">
+            <article class="metric">
+                <h3>50%</h3>
+                <p>Faster insight extraction</p>
+            </article>
+            <article class="metric">
+                <h3>3 Weeks</h3>
+                <p>Build timeline</p>
+            </article>
+            <article class="metric">
+                <h3>Role</h3>
+                <p>Product Developer</p>
+            </article>
+        </section>
+
+        <section class="section">
+            <h2>Problem</h2>
+            <p>Users needed a faster way to process large or complex inputs and get actionable insights without spending time on repetitive manual analysis.</p>
+        </section>
+
+        <section class="section">
+            <h2>Approach</h2>
+            <p>The product flow was designed around speed and clarity: clean input capture, structured analysis output, and concise result formatting for quick decision making.</p>
+            <ul class="points">
+                <li>Built a streamlined end-to-end analysis flow.</li>
+                <li>Prioritized readable summaries over raw, noisy output.</li>
+                <li>Focused on responsive UI for desktop and mobile access.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Architecture</h2>
+            <p>The system combines a lightweight web front-end with AI-backed processing and clear result rendering. It is structured to keep user actions simple while maintaining useful output quality.</p>
+            <ul class="points">
+                <li>Frontend-driven input and response experience.</li>
+                <li>AI-powered analysis pipeline.</li>
+                <li>Output layer optimized for actionable summaries.</li>
+            </ul>
+        </section>
+
+        <section class="section" aria-label="Tech depth insights">
+            <h2>Tech Depth</h2>
+            <div class="tech-depth">
+                <article class="depth-card">
+                    <h3>Stack Used</h3>
+                    <p>Web front-end, AI-enabled analysis pipeline, and summary-focused output rendering.</p>
+                </article>
+                <article class="depth-card">
+                    <h3>Key Tradeoff</h3>
+                    <p>Prioritized response clarity and speed over highly complex customization in the first release.</p>
+                </article>
+                <article class="depth-card">
+                    <h3>Next Improvement</h3>
+                    <p>Add domain-specific analysis templates and lightweight result history for repeat users.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Outcome</h2>
+            <p>The final product reduced manual interpretation overhead and delivered noticeably faster insight generation, helping users move from data to decisions with less friction.</p>
+            <div class="actions">
+                <a class="btn btn-primary" href="https://ai-analyzer-cyber.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+                <a class="btn btn-ghost" href="https://github.com/vardhan373737/AI-ANALYZER.git" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Source Code</a>
+                <a class="btn btn-ghost" href="Projects.html"><i class="fa-solid fa-arrow-left"></i> Back to Projects</a>
+            </div>
+        </section>
+    </main>
+</div>
+</body>
+</html>

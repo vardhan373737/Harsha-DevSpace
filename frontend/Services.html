@@ -232,9 +232,136 @@ nav a.active::after{
     line-height:1.7;
 }
 
+.packages{
+    margin-top:30px;
+}
+
+.packages h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2rem;
+    margin-bottom:6px;
+}
+
+.packages p{
+    color:var(--muted);
+    line-height:1.7;
+    margin-bottom:14px;
+}
+
+.package-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:14px;
+}
+
+.package-card{
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:16px;
+    background:rgba(255,255,255,0.62);
+}
+
+.package-card h3{
+    margin-bottom:8px;
+    font-size:1.05rem;
+}
+
+.package-meta{
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    color:var(--accent-deep);
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.package-list{
+    margin:0;
+    padding-left:18px;
+    color:var(--muted);
+    display:grid;
+    gap:6px;
+    font-size:0.9rem;
+}
+
+.pricing-clarity{
+    margin-top:26px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:18px;
+    background:rgba(255,255,255,0.62);
+}
+
+.pricing-clarity h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.95rem;
+    margin-bottom:8px;
+}
+
+.pricing-clarity p{
+    color:var(--muted);
+    line-height:1.7;
+    margin-bottom:14px;
+}
+
+.clarity-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:12px;
+}
+
+.clarity-card{
+    border:1px solid rgba(143,102,50,0.28);
+    border-radius:14px;
+    padding:14px;
+    background:rgba(255,255,255,0.78);
+}
+
+.clarity-card h3{
+    margin-bottom:4px;
+    font-size:1rem;
+}
+
+.starting-price{
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    color:var(--accent-deep);
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.clarity-split{
+    display:grid;
+    gap:9px;
+}
+
+.clarity-split h4{
+    font-size:0.74rem;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    color:#604e3d;
+}
+
+.clarity-split ul{
+    margin:0;
+    padding-left:16px;
+    color:var(--muted);
+    font-size:0.85rem;
+    line-height:1.58;
+}
+
 @media(max-width:1060px){
     .service-box{
         grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    .package-grid{
+        grid-template-columns:1fr;
+    }
+
+    .clarity-grid{
+        grid-template-columns:1fr;
     }
 }
 
@@ -336,6 +463,112 @@ nav a.active::after{
             <p>Creating clean, modern and responsive interfaces for web applications.</p>
         </div>
     </div>
+
+    <section class="packages" aria-label="Service packages">
+        <h2>Service <span>Packages</span></h2>
+        <p>Structured options for startups, student founders, and growing businesses.</p>
+        <div class="package-grid">
+            <article class="package-card">
+                <h3>Starter Website</h3>
+                <p class="package-meta">Timeline: 1-2 Weeks</p>
+                <ul class="package-list">
+                    <li>3-5 responsive pages</li>
+                    <li>Contact form integration</li>
+                    <li>Deployment support</li>
+                </ul>
+            </article>
+            <article class="package-card">
+                <h3>Business Web App</h3>
+                <p class="package-meta">Timeline: 3-5 Weeks</p>
+                <ul class="package-list">
+                    <li>Role-based dashboard and workflows</li>
+                    <li>Database-backed features</li>
+                    <li>Performance and security basics</li>
+                </ul>
+            </article>
+            <article class="package-card">
+                <h3>Portfolio and Brand Site</h3>
+                <p class="package-meta">Timeline: 1-3 Weeks</p>
+                <ul class="package-list">
+                    <li>Premium visual storytelling layout</li>
+                    <li>Projects, certifications, and resume section</li>
+                    <li>SEO-ready metadata setup</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <section class="pricing-clarity" aria-label="Pricing clarity and scope details">
+        <h2>Pricing <span>Clarity</span></h2>
+        <p>Starting ranges and scope boundaries to set expectations before we begin.</p>
+        <div class="clarity-grid">
+            <article class="clarity-card">
+                <h3>Starter Website</h3>
+                <p class="starting-price">Starting from INR 12,000</p>
+                <div class="clarity-split">
+                    <div>
+                        <h4>Included</h4>
+                        <ul>
+                            <li>Core responsive pages and navigation</li>
+                            <li>Basic contact form setup</li>
+                            <li>Deployment and launch support</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Not Included</h4>
+                        <ul>
+                            <li>Custom backend workflows</li>
+                            <li>Third-party paid integrations</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            <article class="clarity-card">
+                <h3>Business Web App</h3>
+                <p class="starting-price">Starting from INR 35,000</p>
+                <div class="clarity-split">
+                    <div>
+                        <h4>Included</h4>
+                        <ul>
+                            <li>Dashboard, auth flow, and data views</li>
+                            <li>Database-connected feature modules</li>
+                            <li>Performance and security baseline</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Not Included</h4>
+                        <ul>
+                            <li>Enterprise SLA and 24/7 support</li>
+                            <li>Large-scale legacy migrations</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            <article class="clarity-card">
+                <h3>Portfolio and Brand Site</h3>
+                <p class="starting-price">Starting from INR 15,000</p>
+                <div class="clarity-split">
+                    <div>
+                        <h4>Included</h4>
+                        <ul>
+                            <li>Premium visual layout and storytelling</li>
+                            <li>Project and resume integration</li>
+                            <li>SEO-ready metadata setup</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Not Included</h4>
+                        <ul>
+                            <li>Copywriting for all content sections</li>
+                            <li>Long-term content operations</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
 </section>
 </div>
 </body>
