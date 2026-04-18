@@ -20,8 +20,7 @@
     },
     {
       "src": "^/(.*)$",
-      "dest": "/frontend/404.html",
-      "status": 404
+      "dest": "/frontend/404.html"
     }
   ]
 }
