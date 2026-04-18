@@ -198,6 +198,30 @@ nav a.active::after{
     margin-bottom:24px;
 }
 
+.contact-note{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:9px 14px;
+    background:rgba(255,255,255,0.72);
+    color:var(--accent-deep);
+    font-size:0.82rem;
+    font-weight:700;
+    letter-spacing:0.04em;
+    margin-bottom:18px;
+}
+
+.contact-note::before{
+    content:"";
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#5aa35a;
+    box-shadow:0 0 0 4px rgba(90,163,90,0.14);
+}
+
 .contact-info{
     display:flex;
     gap:14px;
@@ -354,6 +378,35 @@ nav a.active::after{
     margin-top:2px;
 }
 
+.quick-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:18px;
+}
+
+.quick-links a{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 14px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    text-decoration:none;
+    color:var(--ink);
+    background:rgba(255,255,255,0.72);
+    font-size:0.82rem;
+    font-weight:700;
+    letter-spacing:0.04em;
+    transition:transform 0.2s ease,background 0.2s ease,color 0.2s ease;
+}
+
+.quick-links a:hover{
+    transform:translateY(-2px);
+    background:var(--accent);
+    color:#fff;
+}
+
 @media(max-width:1060px){
     .contact-section{
         grid-template-columns:1fr;
@@ -421,9 +474,11 @@ nav a.active::after{
 <div class="contact-left">
     <h1>Let us Work <span>Together.</span></h1>
     <p>
-        Have a project in mind or just want to say hello?
-        Feel free to reach out anytime.
+        Have a project in mind, a collaboration idea, or a role to discuss?
+        Reach out and I’ll get back to you quickly.
     </p>
+
+    <div class="contact-note">Open for internships, freelance work, and full-time opportunities.</div>
 
     <div class="contact-info">
         <i class="fas fa-phone"></i>
@@ -447,6 +502,12 @@ nav a.active::after{
             <h4>Country</h4>
             <p>Telangana, India</p>
         </div>
+    </div>
+
+    <div class="quick-links">
+        <a href="Harsha_Kodiganti_CV.pdf" download="Harsha_Kodiganti_CV.pdf"><i class="fa-solid fa-file-arrow-down"></i> Resume</a>
+        <a href="https://github.com/vardhan373737" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+        <a href="mailto:hv0279135@gmail.com"><i class="fas fa-envelope"></i> Email Me</a>
     </div>
 </div>
 

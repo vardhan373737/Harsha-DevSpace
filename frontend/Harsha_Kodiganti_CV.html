@@ -69,6 +69,11 @@
     --light-bg:#f9f7f2;
 }
 
+@page{
+    size:Letter;
+    margin:0;
+}
+
 *{
     margin:0;
     padding:0;
@@ -88,14 +93,15 @@ body{
 
 .resume{
     width:8.5in;
-    height:11in;
+    min-height:11in;
+    height:auto;
     margin:0 auto;
     padding:0.5in;
     box-shadow:0 0 20px rgba(0,0,0,0.1);
     display:flex;
     flex-direction:column;
     gap:0;
-    overflow:hidden;
+    overflow:visible;
 }
 
 .header{
@@ -115,13 +121,21 @@ body{
     display:flex;
     flex-wrap:wrap;
     gap:12px;
-    font-size:10px;
+    font-size:10.5px;
     color:var(--muted);
 }
 
 .contact-info span{
     display:flex;
     align-items:center;
+}
+
+.last-updated{
+    margin-top:5px;
+    font-size:8px;
+    color:var(--muted);
+    letter-spacing:0.08em;
+    text-transform:uppercase;
 }
 
 .section-title{
@@ -141,15 +155,15 @@ body{
 }
 
 .profile-text{
-    font-size:10px;
-    line-height:1.4;
+    font-size:10.5px;
+    line-height:1.5;
     color:var(--muted);
     text-align:justify;
 }
 
 .edu-item{
     margin-bottom:5px;
-    font-size:10px;
+    font-size:10.5px;
 }
 
 .edu-degree{
@@ -163,7 +177,7 @@ body{
 }
 
 .skills-category{
-    font-size:10px;
+    font-size:10.5px;
     margin-bottom:4px;
 }
 
@@ -173,7 +187,7 @@ body{
 
 .project-item{
     margin-bottom:6px;
-    font-size:10px;
+    font-size:10.5px;
 }
 
 .project-title{
@@ -195,7 +209,7 @@ body{
 .cert-item{
     display:flex;
     justify-content:space-between;
-    font-size:10px;
+    font-size:10.5px;
     margin-bottom:3px;
 }
 
@@ -215,7 +229,7 @@ body{
 }
 
 .leadership-item{
-    font-size:10px;
+    font-size:10.5px;
     margin-bottom:3px;
     line-height:1.35;
 }
@@ -239,9 +253,10 @@ a{
     
     .resume{
         width:100%;
-        height:100%;
+        min-height:11in;
+        height:auto;
         margin:0;
-        padding:0.5in;
+        padding:0.45in 0.55in;
         box-shadow:none;
     }
 }
@@ -267,8 +282,13 @@ a{
             <span>|</span>
             <span><a href="https://github.com/vardhan373737" target="_blank">GitHub</a></span>
             <span>|</span>
+            <span><a href="https://www.linkedin.com/in/harsha-vardhan-7a91a32a0" target="_blank">LinkedIn</a></span>
+            <span>|</span>
+            <span><a href="https://www.instagram.com/harsha.vardhan8824" target="_blank">Instagram</a></span>
+            <span>|</span>
             <span><a href="https://harsha-dev-space.vercel.app/" target="_blank">Portfolio</a></span>
         </div>
+        <p class="last-updated">Last Updated: 2026-04-19</p>
     </div>
 
     <div class="section">
@@ -335,6 +355,18 @@ a{
                     <li>Designed premium visual experience with smooth animations, professional typography, and strong hierarchy.</li>
                     <li>Implemented multi-page navigation with smooth UX across projects, certifications, and contact sections.</li>
                     <li>Live Demo: <a href="https://harsha-dev-space.vercel.app/" target="_blank">harsha-dev-space.vercel.app</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="project-item">
+            <span class="project-title">AI Analyzer – Intelligent Analysis Platform</span>
+            <div class="project-desc">
+                <ul>
+                    <li>Built an AI-powered analysis platform that evaluates inputs quickly and presents clear insights.</li>
+                    <li>Focused on fast, actionable results to support smarter decisions with minimal manual effort.</li>
+                    <li>Developed and deployed the project using modern web technologies for a responsive experience.</li>
+                    <li>Live Demo: <a href="https://ai-analyzer-cyber.vercel.app/" target="_blank">ai-analyzer-cyber.vercel.app</a></li>
                 </ul>
             </div>
         </div>

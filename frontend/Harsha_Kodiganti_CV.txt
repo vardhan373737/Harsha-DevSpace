@@ -6,6 +6,9 @@ Email: hv0279135@gmail.com
 Country: Telangana, India
 Portfolio: https://harsha-dev-space.vercel.app/
 GitHub: https://github.com/vardhan373737
+LinkedIn: https://www.linkedin.com/in/harsha-vardhan-7a91a32a0
+Instagram: https://www.instagram.com/harsha.vardhan8824
+Last Updated: 2026-04-19
 
 PROFILE
 Dedicated Computer Science Engineering student passionate about full-stack development, scalable applications, and impactful digital solutions using modern technologies.
@@ -38,6 +41,11 @@ FEATURED PROJECTS
    - Personal responsive portfolio website showcasing projects, certifications, and technical skills.
    - Live: https://harsha-dev-space.vercel.app/
    - Code: https://github.com/vardhan373737/Harsha-DevSpace.git
+
+4. AI Analyzer
+   - AI-powered analysis platform built to evaluate inputs quickly and present clear insights.
+   - Live: https://ai-analyzer-cyber.vercel.app/
+   - Code: https://github.com/vardhan373737/AI-ANALYZER.git
 
 HIGHLIGHTS
 - 15+ projects built
