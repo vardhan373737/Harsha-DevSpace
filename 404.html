@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found | Harsha DevSpace</title>
+<meta name="description" content="The page you are looking for does not exist. Return to Harsha DevSpace portfolio home.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+    --bg:#f6efe4;
+    --ink:#2c2218;
+    --muted:#6d5f50;
+    --accent:#b88846;
+    --accent-deep:#8f6632;
+    --line:#e3d5c1;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:
+        radial-gradient(circle at 12% 18%, rgba(255,224,173,0.45), transparent 42%),
+        radial-gradient(circle at 88% 82%, rgba(215,171,103,0.3), transparent 40%),
+        var(--bg);
+    color:var(--ink);
+    min-height:100vh;
+    display:grid;
+    place-items:center;
+    padding:22px;
+}
+
+.error-shell{
+    width:min(780px,100%);
+    border:1px solid var(--line);
+    border-radius:28px;
+    background:rgba(255,255,255,0.74);
+    backdrop-filter:blur(8px);
+    padding:34px 28px;
+    box-shadow:0 24px 54px rgba(110,79,39,0.14);
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border:1px solid rgba(184,136,70,0.46);
+    background:rgba(184,136,70,0.12);
+    border-radius:999px;
+    padding:8px 14px;
+    font-size:0.78rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--accent-deep);
+    margin-bottom:18px;
+}
+
+.badge::before{
+    content:"";
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--accent);
+}
+
+.error-code{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(5rem,14vw,8.6rem);
+    line-height:0.9;
+    color:var(--accent-deep);
+    letter-spacing:0.02em;
+    margin-bottom:8px;
+}
+
+h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(2rem,4.4vw,3rem);
+    line-height:1.08;
+    margin-bottom:12px;
+}
+
+p{
+    color:var(--muted);
+    line-height:1.8;
+    max-width:640px;
+}
+
+.actions{
+    margin-top:24px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.action-link{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    border-radius:999px;
+    padding:11px 16px;
+    font-weight:700;
+    font-size:0.8rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+}
+
+.action-link.primary{
+    background:linear-gradient(130deg,var(--accent),#a67635);
+    color:#fff;
+}
+
+.action-link.ghost{
+    border:1px solid var(--line);
+    background:rgba(255,255,255,0.84);
+    color:var(--ink);
+}
+
+.helper-links{
+    margin-top:18px;
+    color:var(--muted);
+    font-size:0.88rem;
+}
+
+.helper-links a{
+    color:var(--accent-deep);
+    text-decoration:none;
+    font-weight:600;
+}
+
+.helper-links a:hover{
+    text-decoration:underline;
+}
+
+@media(max-width:720px){
+    .error-shell{
+        border-radius:22px;
+        padding:24px 18px;
+    }
+}
+</style>
+</head>
+<body>
+<main class="error-shell" aria-labelledby="errorTitle">
+    <div class="badge">Harsha DevSpace</div>
+    <p class="error-code">404</p>
+    <h1 id="errorTitle">This page stepped out of scope.</h1>
+    <p>
+        The link may be outdated or the page might have moved.
+        Use one of the shortcuts below to continue exploring projects, services, and contact details.
+    </p>
+    <div class="actions">
+        <a class="action-link primary" href="/index.html">Back To Home</a>
+        <a class="action-link ghost" href="/Projects.html">View Projects</a>
+        <a class="action-link ghost" href="/Contact.html">Contact</a>
+    </div>
+    <p class="helper-links">
+        Need your resume fast? <a href="/Harsha_Kodiganti_CV.pdf" download="Harsha_Kodiganti_CV.pdf">Download CV</a>
+    </p>
+</main>
+</body>
+</html>
