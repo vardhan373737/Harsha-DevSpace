@@ -768,6 +768,94 @@ html.dark-mode .project-card{
     background:rgba(0,0,0,0.18);
 }
 
+.finance-preview-mock{
+    width:100%;
+    height:100%;
+    padding:16px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    background:
+        radial-gradient(circle at 82% 18%, rgba(255, 219, 177, 0.38), transparent 34%),
+        linear-gradient(160deg, #1d1812 0%, #5b4025 44%, #c78f4b 100%);
+    color:#fff8ef;
+}
+
+.finance-preview-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:8px;
+}
+
+.finance-preview-pill{
+    font-size:0.78rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    padding:6px 10px;
+    border-radius:999px;
+    background:rgba(255,255,255,0.14);
+    border:1px solid rgba(255,255,255,0.24);
+}
+
+.finance-preview-summary{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+}
+
+.finance-preview-card{
+    padding:12px;
+    border-radius:14px;
+    background:rgba(255,255,255,0.14);
+    border:1px solid rgba(255,255,255,0.15);
+    backdrop-filter:blur(4px);
+}
+
+.finance-preview-card strong{
+    display:block;
+    font-size:0.8rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    margin-bottom:6px;
+}
+
+.finance-preview-card span{
+    display:block;
+    font-size:1.15rem;
+    font-weight:700;
+    line-height:1;
+}
+
+.finance-preview-footer{
+    margin-top:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    font-size:0.82rem;
+    color:rgba(255,248,238,0.92);
+}
+
+.finance-preview-bars{
+    display:flex;
+    align-items:flex-end;
+    gap:6px;
+    height:54px;
+}
+
+.finance-preview-bars span{
+    width:14px;
+    border-radius:8px 8px 3px 3px;
+    background:linear-gradient(180deg,#ffe3ba 0%,#f1b66d 100%);
+    box-shadow:0 10px 20px rgba(63, 40, 14, 0.18);
+}
+
+.finance-preview-bars span:nth-child(1){height:26px;}
+.finance-preview-bars span:nth-child(2){height:40px;}
+.finance-preview-bars span:nth-child(3){height:30px;}
+.finance-preview-bars span:nth-child(4){height:48px;}
+
 .project-preview-link::after{
     content:"Live Preview";
     position:absolute;
@@ -1924,7 +2012,39 @@ html.dark-mode .theme-toggle:hover{
 
         <div class="project-card" data-category="finance">
             <a class="project-preview-wrap project-preview-link demo-trigger" href="https://dhanam-chits.vercel.app/" data-demo-url="https://dhanam-chits.vercel.app/" data-demo-title="Chit Fund Management Live Demo" aria-label="Open Chit Fund Management live website">
-                <img class="project-preview" src="https://image.thum.io/get/width/1200/noanimate/https://dhanam-chits.vercel.app/" alt="Chit Fund Management live website preview" loading="lazy">
+                <div class="finance-preview-mock" aria-hidden="true">
+                    <div class="finance-preview-top">
+                        <span class="finance-preview-pill">Dhanam Chits</span>
+                        <span class="finance-preview-pill">Secure Ledger</span>
+                    </div>
+                    <div class="finance-preview-summary">
+                        <div class="finance-preview-card">
+                            <strong>Collections</strong>
+                            <span>92%</span>
+                        </div>
+                        <div class="finance-preview-card">
+                            <strong>Members</strong>
+                            <span>128</span>
+                        </div>
+                        <div class="finance-preview-card">
+                            <strong>Payments</strong>
+                            <span>On Time</span>
+                        </div>
+                        <div class="finance-preview-card">
+                            <strong>Reports</strong>
+                            <span>Live</span>
+                        </div>
+                    </div>
+                    <div class="finance-preview-footer">
+                        <span>Transparent member tracking</span>
+                        <div class="finance-preview-bars" aria-hidden="true">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
             </a>
             <div class="project-content">
                 <h3><i class="fa-solid fa-wallet"></i>Chit Fund Management</h3>
