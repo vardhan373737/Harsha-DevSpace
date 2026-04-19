@@ -1559,6 +1559,18 @@ html.dark-mode nav.mobile-menu a.active{
     display:flex;
     align-items:center;
     gap:14px;
+    position:relative;
+}
+
+.logo::after{
+    content:"";
+    position:absolute;
+    inset:-8px -6px;
+    border-radius:22px;
+    border:1px solid rgba(184,136,70,0.22);
+    box-shadow:0 0 0 0 rgba(184,136,70,0.12);
+    animation:logoAura 3.6s ease-in-out infinite;
+    pointer-events:none;
 }
 
 .logo img{
@@ -1569,7 +1581,7 @@ html.dark-mode nav.mobile-menu a.active{
     border:1px solid var(--line);
     box-shadow:0 6px 14px rgba(132,95,48,0.2);
     transition:transform 0.28s ease,box-shadow 0.28s ease,border-color 0.28s ease;
-    animation:logoFramePulse 4.2s ease-in-out infinite;
+    animation:logoFramePulse 4.2s ease-in-out infinite,logoFloat 5.4s ease-in-out infinite;
 }
 
 .logo img:hover{
@@ -1593,6 +1605,22 @@ html.dark-mode nav.mobile-menu a.active{
     50%{
         box-shadow:0 10px 18px rgba(132,95,48,0.24),0 0 10px rgba(184,136,70,0.24);
         border-color:rgba(184,136,70,0.54);
+    }
+}
+
+@keyframes logoFloat{
+    0%,100%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-3px) rotate(-1deg);}
+}
+
+@keyframes logoAura{
+    0%,100%{
+        opacity:0.35;
+        transform:scale(1);
+    }
+    50%{
+        opacity:0.7;
+        transform:scale(1.03);
     }
 }
 
