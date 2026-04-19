@@ -36,6 +36,10 @@ function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+function normalizeMessageLineBreaks(text) {
+  return String(text || "").replace(/\\r?\\n/g, "\n").trim();
+}
+
 module.exports = async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -63,7 +67,7 @@ module.exports = async function handler(req, res) {
   const name = String(body.name || "").trim();
   const email = String(body.email || "").trim();
   const phone = String(body.phone || "").trim();
-  const message = String(body.message || "").trim();
+  const message = normalizeMessageLineBreaks(body.message);
   const bestFor = String(body.bestFor || "").trim().toLowerCase();
   const bestForLabel = BEST_FOR_OPTIONS[bestFor] || "";
   const website = String(body.website || "").trim();

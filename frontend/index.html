@@ -158,6 +158,15 @@ header{
     border-radius:16px;
     object-fit:cover;
     border:1px solid var(--line);
+    box-shadow:0 6px 14px rgba(132,95,48,0.2);
+    transition:transform 0.28s ease,box-shadow 0.28s ease,border-color 0.28s ease;
+    animation:logoFramePulse 4.2s ease-in-out infinite;
+}
+
+.logo img:hover{
+    transform:translateY(-1px) scale(1.04);
+    border-color:rgba(184,136,70,0.62);
+    box-shadow:0 10px 18px rgba(132,95,48,0.26),0 0 12px rgba(184,136,70,0.26);
 }
 
 .logo h2{
@@ -165,6 +174,24 @@ header{
     letter-spacing:0.11em;
     text-transform:uppercase;
     font-weight:700;
+}
+
+@keyframes logoFramePulse{
+    0%,100%{
+        box-shadow:0 6px 14px rgba(132,95,48,0.2);
+        border-color:rgba(143,102,50,0.28);
+    }
+    50%{
+        box-shadow:0 10px 18px rgba(132,95,48,0.24),0 0 10px rgba(184,136,70,0.24);
+        border-color:rgba(184,136,70,0.54);
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .logo img{
+        animation:none;
+        transition:none;
+    }
 }
 
 nav{
@@ -339,6 +366,53 @@ nav a.active::after{
     background:rgba(255,255,255,0.72);
 }
 
+.cta-premium{
+    position:relative;
+    overflow:hidden;
+    isolation:isolate;
+    animation:premiumPulse 3.8s ease-in-out infinite;
+}
+
+.cta-premium::before{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    background:linear-gradient(110deg,transparent 26%,rgba(255,255,255,0.34) 47%,transparent 70%);
+    transform:translateX(-120%);
+    transition:transform 0.8s ease;
+    pointer-events:none;
+    z-index:0;
+}
+
+.cta-premium:hover,
+.cta-premium:focus-visible{
+    transform:translateY(-2px) scale(1.02);
+    box-shadow:0 14px 24px rgba(132,95,48,0.22);
+}
+
+.cta-premium:hover::before,
+.cta-premium:focus-visible::before{
+    transform:translateX(120%);
+}
+
+.cta-premium:focus-visible{
+    outline:3px solid rgba(184,136,70,0.42);
+    outline-offset:2px;
+}
+
+@keyframes premiumPulse{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-1px);}
+}
+
+@media (prefers-reduced-motion: reduce){
+    .cta-premium,
+    .cta-premium::before{
+        animation:none;
+        transition:none;
+    }
+}
+
 .social-icons{
     display:flex;
     gap:12px;
@@ -377,7 +451,8 @@ nav a.active::after{
     padding:16px;
     background:linear-gradient(155deg,rgba(255,255,255,0.5),rgba(239,219,184,0.62));
     box-shadow:0 25px 40px rgba(132,95,48,0.2);
-    animation:floatCard 5s ease-in-out infinite;
+    isolation:isolate;
+    animation:floatCard 5s ease-in-out infinite,auraPulse 4.2s ease-in-out infinite;
 }
 
 .hero-image::before{
@@ -387,6 +462,20 @@ nav a.active::after{
     border-radius:26px;
     border:1px solid rgba(255,255,255,0.75);
     pointer-events:none;
+}
+
+.hero-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:36px;
+    padding:1.5px;
+    pointer-events:none;
+    background:conic-gradient(from 0deg,rgba(255,255,255,0.2),rgba(255,231,192,0.95),rgba(184,136,70,0.82),rgba(255,245,225,0.88),rgba(255,255,255,0.2));
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+    animation:borderSpin 7s linear infinite;
 }
 
 .hero-image img{
@@ -400,6 +489,23 @@ nav a.active::after{
 @keyframes floatCard{
     0%,100%{transform:translateY(0);}
     50%{transform:translateY(-8px);}
+}
+
+@keyframes borderSpin{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
+
+@keyframes auraPulse{
+    0%,100%{box-shadow:0 25px 40px rgba(132,95,48,0.2),0 0 0 rgba(184,136,70,0);}
+    50%{box-shadow:0 28px 44px rgba(132,95,48,0.24),0 0 24px rgba(184,136,70,0.28);}
+}
+
+@media (prefers-reduced-motion: reduce){
+    .hero-image,
+    .hero-image::after{
+        animation:none;
+    }
 }
 
 .stats{
@@ -597,46 +703,7 @@ nav a.active::after{
     }
 
     .mobile-sticky-cta{
-        position:fixed;
-        left:10px;
-        right:10px;
-        bottom:10px;
-        z-index:1200;
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        gap:8px;
-        padding:8px;
-        border:1px solid var(--line);
-        border-radius:14px;
-        background:rgba(255,250,240,0.96);
-        backdrop-filter:blur(8px);
-        box-shadow:0 8px 20px rgba(91,67,35,0.2);
-    }
-
-    .mobile-sticky-cta a{
-        text-decoration:none;
-        border-radius:999px;
-        padding:10px 12px;
-        text-align:center;
-        font-size:0.74rem;
-        letter-spacing:0.06em;
-        text-transform:uppercase;
-        font-weight:700;
-        display:inline-flex;
-        align-items:center;
-        justify-content:center;
-        gap:6px;
-    }
-
-    .mobile-sticky-cta .primary{
-        background:linear-gradient(125deg,var(--accent),#a67635);
-        color:#fff;
-    }
-
-    .mobile-sticky-cta .ghost{
-        border:1px solid var(--line);
-        color:var(--ink);
-        background:rgba(255,255,255,0.8);
+        display:none;
     }
 }
 </style>
@@ -683,8 +750,8 @@ nav a.active::after{
             <div class="availability-note">Open for internships, freelance work, and full-time opportunities.</div>
 
             <div class="actions">
-                <a href="Harsha_Kodiganti_CV.pdf" download="Harsha_Kodiganti_CV.pdf" class="btn btn-primary" aria-label="Download Resume"><i class="fa-solid fa-file-arrow-down"></i> Download Resume</a>
-                <a href="Projects.html" class="btn btn-ghost"><i class="fa-solid fa-arrow-right"></i> View Projects</a>
+                <a href="Harsha_Kodiganti_CV.pdf" download="Harsha_Kodiganti_CV.pdf" class="btn btn-primary cta-premium" aria-label="Download Resume"><i class="fa-solid fa-file-arrow-down"></i> Download Resume</a>
+                <a href="Projects.html" class="btn btn-ghost cta-premium"><i class="fa-solid fa-arrow-right"></i> View Projects</a>
             </div>
 
             <div class="social-icons">
@@ -738,15 +805,15 @@ nav a.active::after{
     <section class="site-cta" aria-label="Collaboration call to action">
         <p><strong>Open to new opportunities.</strong> Available for internships, freelance projects, and full-time roles.</p>
         <div class="site-cta-actions">
-            <a href="Harsha_Kodiganti_CV.pdf" download="Harsha_Kodiganti_CV.pdf" class="btn btn-primary"><i class="fa-solid fa-file-arrow-down"></i> Resume</a>
-            <a href="Contact.html" class="btn btn-ghost"><i class="fa-solid fa-paper-plane"></i> Contact</a>
+            <a href="Harsha_Kodiganti_CV.pdf" download="Harsha_Kodiganti_CV.pdf" class="btn btn-primary cta-premium"><i class="fa-solid fa-file-arrow-down"></i> Resume</a>
+            <a href="Contact.html" class="btn btn-ghost cta-premium"><i class="fa-solid fa-paper-plane"></i> Contact</a>
         </div>
     </section>
 </div>
 
 <div class="mobile-sticky-cta" aria-label="Quick mobile actions">
-    <a class="primary" href="Harsha_Kodiganti_CV.pdf" download="Harsha_Kodiganti_CV.pdf"><i class="fa-solid fa-file-arrow-down"></i> Resume</a>
-    <a class="ghost" href="Contact.html"><i class="fa-solid fa-paper-plane"></i> Contact</a>
+    <a class="primary cta-premium" href="Harsha_Kodiganti_CV.pdf" download="Harsha_Kodiganti_CV.pdf"><i class="fa-solid fa-file-arrow-down"></i> Resume</a>
+    <a class="ghost cta-premium" href="Contact.html"><i class="fa-solid fa-paper-plane"></i> Contact</a>
 </div>
 
 <script>

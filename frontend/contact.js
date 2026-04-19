@@ -15,13 +15,34 @@ document.addEventListener("DOMContentLoaded", function () {
     const consentInput = document.getElementById("consent");
     const bestForInput = document.getElementById("bestFor");
     const messageInput = document.getElementById("message");
+    const nameInput = document.getElementById("name");
 
-    const prefillTemplates = {
-        internship: "Hi Harsha, I am reaching out regarding an internship opportunity.\\nRole details:\\nStart date:\\nExpected responsibilities:\\n",
-        freelance: "Hi Harsha, I would like to discuss a freelance project.\\nProject goal:\\nTimeline:\\nBudget range:\\n",
-        fulltime: "Hi Harsha, I am contacting you about a full-time role.\\nRole title:\\nCompany:\\nTech stack expectations:\\n",
-        collaboration: "Hi Harsha, I would like to explore a collaboration.\\nProduct idea:\\nScope of collaboration:\\nPreferred timeline:\\n"
-    };
+    function getSenderName() {
+        const value = nameInput ? nameInput.value.trim() : "";
+        return value.length >= 2 ? value : "a candidate";
+    }
+
+    function buildPrefillTemplate(type) {
+        const senderName = getSenderName();
+
+        if (type === "internship") {
+            return "Hi, I am " + senderName + ". I am reaching out regarding an internship opportunity.\nRole details:\nStart date:\nExpected responsibilities:\n";
+        }
+
+        if (type === "freelance") {
+            return "Hi, I am " + senderName + ". I would like to discuss a freelance project.\nProject goal:\nTimeline:\nBudget range:\n";
+        }
+
+        if (type === "fulltime") {
+            return "Hi, I am " + senderName + ". I am contacting you about a full-time role.\nRole title:\nCompany:\nTech stack expectations:\n";
+        }
+
+        if (type === "collaboration") {
+            return "Hi, I am " + senderName + ". I would like to explore a collaboration.\nProduct idea:\nScope of collaboration:\nPreferred timeline:\n";
+        }
+
+        return "";
+    }
 
     const bestForLabels = {
         internship: "Internship Opportunity",
@@ -39,12 +60,17 @@ document.addEventListener("DOMContentLoaded", function () {
         errorMsg.textContent = message;
         errorMsg.style.display = "block";
         successMsg.style.display = "none";
+        window.alert(message);
     }
 
     function clearMessages() {
         errorMsg.style.display = "none";
         errorMsg.textContent = "";
         successMsg.style.display = "none";
+    }
+
+    function normalizeMessageLineBreaks(text) {
+        return String(text || "").replace(/\\r?\\n/g, "\n").trim();
     }
 
     function looksSpammy(message) {
@@ -98,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (bestForInput && messageInput) {
         bestForInput.addEventListener("change", function () {
             const selectedValue = bestForInput.value;
-            const template = prefillTemplates[selectedValue] || "";
+            const template = buildPrefillTemplate(selectedValue);
 
             if (!template) {
                 lastAppliedTemplate = "";
@@ -109,6 +135,24 @@ document.addEventListener("DOMContentLoaded", function () {
             const canReplace = currentMessage === "" || currentMessage === lastAppliedTemplate.trim();
 
             if (canReplace) {
+                messageInput.value = template;
+                lastAppliedTemplate = template;
+            }
+        });
+    }
+
+    if (nameInput && bestForInput && messageInput) {
+        nameInput.addEventListener("input", function () {
+            const selectedValue = bestForInput.value;
+            if (!selectedValue) {
+                return;
+            }
+
+            const currentMessage = messageInput.value.trim();
+            const canReplace = currentMessage === "" || currentMessage === lastAppliedTemplate.trim();
+
+            if (canReplace) {
+                const template = buildPrefillTemplate(selectedValue);
                 messageInput.value = template;
                 lastAppliedTemplate = template;
             }
@@ -144,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const nameValue = document.getElementById("name").value.trim();
         const emailValue = document.getElementById("email").value.trim();
         const phoneValue = document.getElementById("phone").value.trim();
-        const messageValue = messageInput.value.trim();
+        const messageValue = normalizeMessageLineBreaks(messageInput.value);
         const bestForValue = bestForInput ? bestForInput.value : "";
         const bestForLabel = bestForLabels[bestForValue] || "";
 
@@ -233,6 +277,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         localStorage.setItem("contact_last_submit", String(Date.now()));
         successMsg.style.display = "block";
+        window.alert("Message sent successfully!");
         form.reset();
         loadedAtInput.value = String(Date.now());
         button.innerText = "Send Message";

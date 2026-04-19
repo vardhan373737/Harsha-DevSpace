@@ -69,6 +69,24 @@
                 "position": 4,
                 "name": "AI Analyzer",
                 "url": "https://ai-analyzer-cyber.vercel.app/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 5,
+                "name": "HomeEase Case Study",
+                "url": "https://www.harshadevspace.me/case-study-homeease.html"
+            },
+            {
+                "@type": "ListItem",
+                "position": 6,
+                "name": "Chit Fund Management Case Study",
+                "url": "https://www.harshadevspace.me/case-study-chit-fund-management.html"
+            },
+            {
+                "@type": "ListItem",
+                "position": 7,
+                "name": "Portfolio Website Case Study",
+                "url": "https://www.harshadevspace.me/case-study-portfolio-website.html"
             }
         ]
     }
@@ -173,6 +191,15 @@ header{
     border-radius:16px;
     object-fit:cover;
     border:1px solid var(--line);
+    box-shadow:0 6px 14px rgba(132,95,48,0.2);
+    transition:transform 0.28s ease,box-shadow 0.28s ease,border-color 0.28s ease;
+    animation:logoFramePulse 4.2s ease-in-out infinite;
+}
+
+.logo img:hover{
+    transform:translateY(-1px) scale(1.04);
+    border-color:rgba(184,136,70,0.62);
+    box-shadow:0 10px 18px rgba(132,95,48,0.26),0 0 12px rgba(184,136,70,0.26);
 }
 
 .logo h2{
@@ -180,6 +207,24 @@ header{
     letter-spacing:0.11em;
     text-transform:uppercase;
     font-weight:700;
+}
+
+@keyframes logoFramePulse{
+    0%,100%{
+        box-shadow:0 6px 14px rgba(132,95,48,0.2);
+        border-color:rgba(143,102,50,0.28);
+    }
+    50%{
+        box-shadow:0 10px 18px rgba(132,95,48,0.24),0 0 10px rgba(184,136,70,0.24);
+        border-color:rgba(184,136,70,0.54);
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .logo img{
+        animation:none;
+        transition:none;
+    }
 }
 
 nav{
@@ -667,17 +712,69 @@ nav a.active::after{
     text-transform:uppercase;
     letter-spacing:0.06em;
     font-weight:700;
+    position:relative;
+    overflow:hidden;
+    isolation:isolate;
+    transition:transform 0.28s ease,box-shadow 0.28s ease,background 0.28s ease,color 0.28s ease,border-color 0.28s ease;
+    animation:ctaPulse 3.8s ease-in-out infinite;
 }
 
 .site-cta-link.primary{
     background:linear-gradient(125deg,var(--accent),#a67635);
     color:#fff;
+    box-shadow:0 10px 20px rgba(167,116,52,0.26);
 }
 
 .site-cta-link.ghost{
     border:1px solid var(--line);
     color:var(--ink);
     background:rgba(255,255,255,0.72);
+}
+
+.site-cta-link::before{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    background:linear-gradient(110deg,transparent 26%,rgba(255,255,255,0.34) 47%,transparent 70%);
+    transform:translateX(-120%);
+    transition:transform 0.8s ease;
+    pointer-events:none;
+    z-index:0;
+}
+
+.site-cta-link:hover,
+.site-cta-link:focus-visible{
+    transform:translateY(-2px) scale(1.02);
+    box-shadow:0 14px 24px rgba(132,95,48,0.22);
+}
+
+.site-cta-link:hover::before,
+.site-cta-link:focus-visible::before{
+    transform:translateX(120%);
+}
+
+.site-cta-link.ghost:hover,
+.site-cta-link.ghost:focus-visible{
+    border-color:rgba(143,102,50,0.45);
+    background:rgba(255,255,255,0.92);
+}
+
+.site-cta-link:focus-visible{
+    outline:3px solid rgba(184,136,70,0.42);
+    outline-offset:2px;
+}
+
+@keyframes ctaPulse{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-1px);}
+}
+
+@media (prefers-reduced-motion: reduce){
+    .site-cta-link,
+    .site-cta-link::before{
+        animation:none;
+        transition:none;
+    }
 }
 
 .tech-stack{
@@ -858,6 +955,7 @@ nav a.active::after{
                 <p class="problem-statement"><span>Problem Statement</span>Users were relying on scattered calls and chats to book home services, which caused delays, low trust, and no clear booking tracking.</p>
                 <p class="project-note">Focused on a clearer booking journey, responsive UI, and practical user flows that make the service easier to use.</p>
                 <p class="impact-badge"><span>Impact</span>Estimated 35% faster booking completion through clearer UX and guided service flows.</p>
+                <a class="case-study-link" href="case-study-homeease.html" aria-label="Read HomeEase case study"><i class="fa-solid fa-book-open"></i> Read Case Study</a>
                 <div class="tech-stack">HTML | CSS | JavaScript | Responsive UI</div>
                 <div class="project-links">
                     <a href="https://homeease-delta.vercel.app/" aria-label="Open HomeEase project" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i></a>
@@ -880,6 +978,7 @@ nav a.active::after{
                 <p class="problem-statement"><span>Problem Statement</span>Manual chit fund records created payment mistakes, delayed updates, and weak transparency for members and admins.</p>
                 <p class="project-note">Built to improve record handling, reduce manual mistakes, and make fund status easier to review.</p>
                 <p class="impact-badge"><span>Impact</span>Estimated 40% reduction in manual record errors with centralized payment and installment tracking.</p>
+                <a class="case-study-link" href="case-study-chit-fund-management.html" aria-label="Read Chit Fund Management case study"><i class="fa-solid fa-book-open"></i> Read Case Study</a>
                 <div class="tech-stack">HTML | CSS | JavaScript | Data Management</div>
                 <div class="project-links">
                     <a href="https://dhanam-chits.vercel.app/" aria-label="Open Chit Fund project" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i></a>
@@ -916,6 +1015,7 @@ nav a.active::after{
                 <p class="problem-statement"><span>Problem Statement</span>Recruiters needed one fast mobile-friendly page to evaluate skills, projects, and proof of work instead of checking many separate links.</p>
                 <p class="project-note">Designed as a polished personal brand site with clear navigation, strong hierarchy, and easy access to proof of work.</p>
                 <p class="impact-badge"><span>Impact</span>Reduced recruiter evaluation friction by consolidating projects, resume, and contact into one place.</p>
+                <a class="case-study-link" href="case-study-portfolio-website.html" aria-label="Read Portfolio Website case study"><i class="fa-solid fa-book-open"></i> Read Case Study</a>
                 <div class="tech-stack">HTML | CSS | JavaScript | Personal Branding</div>
                 <div class="project-links">
                     <a href="https://harsha-dev-space.vercel.app/" aria-label="Open portfolio project" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i></a>

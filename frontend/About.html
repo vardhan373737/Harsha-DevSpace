@@ -134,6 +134,15 @@ header{
     border-radius:16px;
     object-fit:cover;
     border:1px solid var(--line);
+    box-shadow:0 6px 14px rgba(132,95,48,0.2);
+    transition:transform 0.28s ease,box-shadow 0.28s ease,border-color 0.28s ease;
+    animation:logoFramePulse 4.2s ease-in-out infinite;
+}
+
+.logo img:hover{
+    transform:translateY(-1px) scale(1.04);
+    border-color:rgba(184,136,70,0.62);
+    box-shadow:0 10px 18px rgba(132,95,48,0.26),0 0 12px rgba(184,136,70,0.26);
 }
 
 .logo h2{
@@ -141,6 +150,24 @@ header{
     letter-spacing:0.11em;
     text-transform:uppercase;
     font-weight:700;
+}
+
+@keyframes logoFramePulse{
+    0%,100%{
+        box-shadow:0 6px 14px rgba(132,95,48,0.2);
+        border-color:rgba(143,102,50,0.28);
+    }
+    50%{
+        box-shadow:0 10px 18px rgba(132,95,48,0.24),0 0 10px rgba(184,136,70,0.24);
+        border-color:rgba(184,136,70,0.54);
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .logo img{
+        animation:none;
+        transition:none;
+    }
 }
 
 nav{
@@ -509,17 +536,69 @@ nav a.active::after{
     text-transform:uppercase;
     letter-spacing:0.06em;
     font-weight:700;
+    position:relative;
+    overflow:hidden;
+    isolation:isolate;
+    transition:transform 0.28s ease,box-shadow 0.28s ease,background 0.28s ease,color 0.28s ease,border-color 0.28s ease;
+    animation:ctaPulse 3.8s ease-in-out infinite;
 }
 
 .site-cta-link.primary{
     background:linear-gradient(125deg,var(--accent),#a67635);
     color:#fff;
+    box-shadow:0 10px 20px rgba(167,116,52,0.26);
 }
 
 .site-cta-link.ghost{
     border:1px solid var(--line);
     color:var(--ink);
     background:rgba(255,255,255,0.72);
+}
+
+.site-cta-link::before{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    background:linear-gradient(110deg,transparent 26%,rgba(255,255,255,0.34) 47%,transparent 70%);
+    transform:translateX(-120%);
+    transition:transform 0.8s ease;
+    pointer-events:none;
+    z-index:0;
+}
+
+.site-cta-link:hover,
+.site-cta-link:focus-visible{
+    transform:translateY(-2px) scale(1.02);
+    box-shadow:0 14px 24px rgba(132,95,48,0.22);
+}
+
+.site-cta-link:hover::before,
+.site-cta-link:focus-visible::before{
+    transform:translateX(120%);
+}
+
+.site-cta-link.ghost:hover,
+.site-cta-link.ghost:focus-visible{
+    border-color:rgba(143,102,50,0.45);
+    background:rgba(255,255,255,0.92);
+}
+
+.site-cta-link:focus-visible{
+    outline:3px solid rgba(184,136,70,0.42);
+    outline-offset:2px;
+}
+
+@keyframes ctaPulse{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-1px);}
+}
+
+@media (prefers-reduced-motion: reduce){
+    .site-cta-link,
+    .site-cta-link::before{
+        animation:none;
+        transition:none;
+    }
 }
 
 @media(max-width:1060px){

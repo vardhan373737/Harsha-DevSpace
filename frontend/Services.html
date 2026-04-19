@@ -120,6 +120,15 @@ header{
     border-radius:16px;
     object-fit:cover;
     border:1px solid var(--line);
+    box-shadow:0 6px 14px rgba(132,95,48,0.2);
+    transition:transform 0.28s ease,box-shadow 0.28s ease,border-color 0.28s ease;
+    animation:logoFramePulse 4.2s ease-in-out infinite;
+}
+
+.logo img:hover{
+    transform:translateY(-1px) scale(1.04);
+    border-color:rgba(184,136,70,0.62);
+    box-shadow:0 10px 18px rgba(132,95,48,0.26),0 0 12px rgba(184,136,70,0.26);
 }
 
 .logo h2{
@@ -127,6 +136,24 @@ header{
     letter-spacing:0.11em;
     text-transform:uppercase;
     font-weight:700;
+}
+
+@keyframes logoFramePulse{
+    0%,100%{
+        box-shadow:0 6px 14px rgba(132,95,48,0.2);
+        border-color:rgba(143,102,50,0.28);
+    }
+    50%{
+        box-shadow:0 10px 18px rgba(132,95,48,0.24),0 0 10px rgba(184,136,70,0.24);
+        border-color:rgba(184,136,70,0.54);
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .logo img{
+        animation:none;
+        transition:none;
+    }
 }
 
 nav{
