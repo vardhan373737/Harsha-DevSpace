@@ -25,6 +25,10 @@
 <meta name="twitter:title" content="AI Analyzer Case Study | Harsha DevSpace">
 <meta name="twitter:description" content="Architecture, decisions, and impact breakdown for the AI Analyzer product.">
 <meta name="twitter:image" content="https://www.harshadevspace.me/assets/social-preview.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:secure_url" content="https://www.harshadevspace.me/assets/social-preview.png">
+<meta name="twitter:creator" content="@vardhan373737">
+<meta name="twitter:site" content="@vardhan373737">
 
 <script type="application/ld+json">
 {
@@ -153,6 +157,56 @@ header{
 
 nav{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:22px;}
 nav a{text-decoration:none;color:var(--ink);font-size:0.93rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;}
+
+header{position:sticky;top:0;z-index:100;background:var(--surface);width:100%;}
+header.scrolled{padding:12px 48px;background:rgba(255,250,240,0.95);border-bottom:1px solid rgba(184,136,70,0.15);box-shadow:0 4px 16px rgba(132,95,48,0.12);}
+html.dark-mode header.scrolled{background:rgba(26,22,18,0.95);border-bottom:1px solid rgba(212,165,116,0.15);box-shadow:0 4px 16px rgba(0,0,0,0.3);}
+header.scrolled .logo img{width:44px;height:44px;}
+header.scrolled .logo h2{font-size:0.95rem;}
+.hamburger-menu{display:none;flex-direction:column;background:none;border:none;cursor:pointer;padding:8px;gap:5px;position:relative;z-index:101;-webkit-appearance:none;appearance:none;}
+.hamburger-menu span{width:24px;height:2px;background:var(--ink);border-radius:2px;transition:all 0.35s cubic-bezier(0.4,0,0.2,1);transform-origin:center;}
+.hamburger-menu.active span:nth-child(1){transform:rotateZ(45deg) translateY(12px);}
+.hamburger-menu.active span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hamburger-menu.active span:nth-child(3){transform:rotateZ(-45deg) translateY(-12px);}
+.nav-desktop{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:22px;}
+nav.mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;background:var(--surface);border-bottom:1px solid var(--line);flex-direction:column;gap:0;z-index:140;animation:slideDownMenu 0.35s cubic-bezier(0.4,0,0.2,1);box-shadow:0 8px 24px rgba(132,95,48,0.15);}
+html.dark-mode nav.mobile-menu{background:var(--bg);}
+nav.mobile-menu[aria-hidden="false"]{display:flex;}
+nav.mobile-menu a{padding:16px 24px;border-bottom:1px solid rgba(184,136,70,0.1);text-decoration:none;color:var(--ink);font-size:0.95rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;transition:all 0.28s ease;position:relative;}
+nav.mobile-menu a:hover{background:rgba(184,136,70,0.08);padding-left:32px;color:var(--accent);}nav.mobile-menu a::after{display:none !important;}nav.mobile-menu a.active{background:rgba(184,136,70,0.16);color:var(--accent-deep);border-bottom:none;box-shadow:inset 4px 0 0 var(--accent);}html.dark-mode nav.mobile-menu a.active{background:rgba(212,165,116,0.14);color:var(--accent);border-bottom:none;box-shadow:inset 4px 0 0 var(--accent);}
+@keyframes slideDownMenu{from{opacity:0;transform:translateY(-10px);}to{opacity:1;transform:translateY(0);}}
+.floating-action-btn{position:fixed;bottom:30px;right:30px;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-deep));border:none;color:white;font-size:1.5rem;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(184,136,70,0.32);transition:all 0.35s cubic-bezier(0.4,0,0.2,1);z-index:90;overflow:visible;-webkit-appearance:none;appearance:none;}
+.floating-action-btn:hover{transform:scale(1.12) translateY(-4px);box-shadow:0 16px 40px rgba(184,136,70,0.4);}
+.floating-action-btn:active{transform:scale(1.08) translateY(-2px);}
+.floating-action-btn.show{display:flex;animation:fabSlideUp 0.5s cubic-bezier(0.4,0,0.2,1);}
+@keyframes fabSlideUp{from{opacity:0;transform:translateY(60px) scale(0.8);}to{opacity:1;transform:translateY(0) scale(1);}}
+.fab-tooltip{position:absolute;bottom:72px;right:0;background:var(--ink);color:var(--surface);padding:8px 12px;border-radius:8px;font-size:0.78rem;font-weight:600;letter-spacing:0.05em;white-space:nowrap;opacity:0;transform:translateY(8px);pointer-events:none;transition:all 0.28s ease;box-shadow:0 4px 12px rgba(132,95,48,0.2);}
+.floating-action-btn:hover .fab-tooltip{opacity:1;transform:translateY(0);}
+html.dark-mode .floating-action-btn{background:linear-gradient(135deg,var(--accent),var(--accent-deep));box-shadow:0 8px 24px rgba(212,165,116,0.32);}
+html.dark-mode .floating-action-btn:hover{box-shadow:0 16px 40px rgba(212,165,116,0.4);}
+html.dark-mode .fab-tooltip{background:var(--surface);color:var(--ink);}
+.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;mix-blend-mode:difference;transform:translate3d(-50%,-50%,0);}
+.cursor-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px rgba(184,136,70,0.35);}
+.cursor-ring{width:38px;height:38px;border:1.5px solid rgba(184,136,70,0.55);border-radius:50%;transition:width 0.18s ease,height 0.18s ease,border-color 0.18s ease,opacity 0.18s ease,transform 0.06s linear;opacity:0.85;}
+body.cursor-hover .cursor-ring{width:52px;height:52px;border-color:rgba(184,136,70,0.9);}
+body.cursor-active .cursor-ring{width:24px;height:24px;opacity:0.65;}
+body.cursor-hide .cursor-dot,body.cursor-hide .cursor-ring{opacity:0;}
+@media (hover:none), (pointer:coarse), (max-width:768px){
+    .cursor-dot,
+    .cursor-ring{display:none !important;}
+}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:4px;box-shadow:0 0 0 4px rgba(184,136,70,0.16);border-radius:12px;}
+nav a:focus-visible,.btn:focus-visible,.social-link:focus-visible{outline:2px solid var(--accent);outline-offset:5px;}
+.page-footer{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:28px 48px 40px;border-top:1px solid var(--line);}
+.page-footer strong{display:block;font-size:0.95rem;letter-spacing:0.08em;text-transform:uppercase;}
+.page-footer p{margin-top:4px;color:var(--muted);font-size:0.88rem;}
+.footer-socials{display:flex;align-items:center;gap:14px;}
+.social-link{width:42px;height:42px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:var(--ink);background:rgba(255,255,255,0.68);border:1px solid var(--line);transition:transform 0.28s ease,background 0.28s ease,color 0.28s ease,box-shadow 0.28s ease;}
+.social-link:hover{transform:translateY(-3px) scale(1.06);background:var(--accent);color:#fff;box-shadow:0 12px 20px rgba(184,136,70,0.22);}
+html.dark-mode .social-link{background:rgba(255,255,255,0.06);}
+html.dark-mode .social-link:hover{background:var(--accent);color:var(--bg);}
+@media(max-width:820px){.page-footer{flex-direction:column;align-items:flex-start;padding:24px 18px 34px;}}
+@media (max-width:768px){header{padding:18px 32px;}header.scrolled{padding:10px 32px;}.nav-desktop{display:none;}.hamburger-menu{display:flex;}.floating-action-btn{bottom:24px;right:24px;width:52px;height:52px;font-size:1.3rem;}}
 
 .case-study{padding:52px 48px 60px;display:grid;gap:18px;}
 
@@ -295,29 +349,96 @@ h1 span{color:var(--accent-deep);}
 }
 
 @media(max-width:820px){
-    header{flex-direction:column;gap:14px;padding:18px;}
+    header{justify-content:space-between;align-items:center;padding:18px;}
+    .logo{min-width:0;flex:1;}
+    .hamburger-menu{margin-left:auto;flex-shrink:0;}
     nav{justify-content:center;gap:14px;}
     nav a{font-size:0.78rem;}
     .case-study{padding:26px 18px 30px;}
     .quick-metrics{grid-template-columns:1fr;}
     .tech-depth{grid-template-columns:1fr;}
 }
+
+.breadcrumb{
+    padding:14px 48px;
+    font-size:0.85rem;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    border-bottom:1px solid var(--line);
+    background:rgba(255,255,255,0.5);
+}
+
+.breadcrumb a{
+    text-decoration:none;
+    color:var(--accent);
+    transition:color 0.28s ease;
+}
+
+.breadcrumb a:hover{
+    color:var(--accent-deep);
+    text-decoration:underline;
+}
+
+.breadcrumb-separator{
+    color:var(--muted);
+    opacity:0.6;
+}
+
+.breadcrumb-current{
+    color:var(--ink);
+    font-weight:600;
+}
+
+@media(max-width:820px){
+    .breadcrumb{
+        padding:10px 18px;
+        font-size:0.78rem;
+    }
+}
 </style>
 </head>
 <body>
 <div class="page-shell">
-    <header>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+    <header id="main-header" class="sticky-header">
         <div class="logo">
             <img src="profile.jpeg" alt="Harsha DevSpace logo">
             <h2>Harsha DevSpace</h2>
         </div>
-        <nav>
+    <nav id="main-nav" class="nav-desktop">
             <a href="index.html">Home</a>
-            <a href="Projects.html">Projects</a>
+            <a href="Projects.html" class="active">Projects</a>
             <a href="certificates.html">Certificates</a>
             <a href="Contact.html">Contact</a>
         </nav>
+
+        <button id="hamburger-menu" class="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
+
+    <nav id="mobile-nav" class="mobile-menu" aria-hidden="true">
+        <a href="index.html">Home</a>
+        <a href="Projects.html" class="active">Projects</a>
+        <a href="certificates.html">Certificates</a>
+        <a href="Contact.html">Contact</a>
+    </nav>
+
+    <button id="floating-action-btn" class="floating-action-btn" aria-label="Get in touch" title="Contact us">
+        <i class="fas fa-comments"></i>
+        <span class="fab-tooltip">Get in Touch</span>
+    </button>
+    <nav class="breadcrumb" aria-label="Breadcrumb navigation">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="Projects.html">Projects</a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current" aria-current="page">AI Analyzer</span>
+    </nav>
 
     <main class="case-study">
         <p class="eyebrow">Case Study</p>
@@ -394,7 +515,125 @@ h1 span{color:var(--accent-deep);}
                 <a class="btn btn-ghost" href="Projects.html"><i class="fa-solid fa-arrow-left"></i> Back to Projects</a>
             </div>
         </section>
+
+            <footer class="page-footer" aria-label="Footer social links">
+                <div>
+                    <strong>Harsha DevSpace</strong>
+                    <p>Designing clean, premium digital experiences.</p>
+                </div>
+                <div class="footer-socials">
+                    <a class="social-link" href="https://github.com/vardhan373737" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a class="social-link" href="https://www.linkedin.com/in/harsha-vardhan-7a91a32a0" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="social-link" href="https://www.instagram.com/harsha.vardhan8824" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </footer>
     </main>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+    const header = document.getElementById('main-header');
+    const hamburgerBtn = document.getElementById('hamburger-menu');
+    const mobileNav = document.getElementById('mobile-nav');
+    const floatingBtn = document.getElementById('floating-action-btn');
+
+    const syncMobileNavOffset = () => {
+        if(!header || !mobileNav){
+            return;
+        }
+
+        const headerBottom = Math.ceil(header.getBoundingClientRect().bottom);
+        const safeGap = 2;
+        mobileNav.style.top = `${headerBottom + safeGap}px`;
+    };
+
+    const updateScrollState = () => {
+        if(header){
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        }
+
+        if(floatingBtn){
+            floatingBtn.classList.toggle('show', window.scrollY > 300);
+        }
+
+        syncMobileNavOffset();
+    };
+
+    const closeMobileNav = () => {
+        if(!hamburgerBtn || !mobileNav){
+            return;
+        }
+
+        hamburgerBtn.classList.remove('active');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+        mobileNav.setAttribute('aria-hidden', 'true');
+    };
+
+    updateScrollState();
+    syncMobileNavOffset();
+    window.addEventListener('scroll', updateScrollState, { passive: true });
+
+    if(hamburgerBtn && mobileNav){
+        hamburgerBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            syncMobileNavOffset();
+
+            const isOpen = hamburgerBtn.getAttribute('aria-expanded') === 'true';
+            const nextState = !isOpen;
+
+            hamburgerBtn.classList.toggle('active', nextState);
+            hamburgerBtn.setAttribute('aria-expanded', String(nextState));
+            mobileNav.setAttribute('aria-hidden', String(!nextState));
+        });
+
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMobileNav);
+        });
+
+        document.addEventListener('click', (e) => {
+            if(hamburgerBtn.contains(e.target) || mobileNav.contains(e.target)){
+                return;
+            }
+
+            closeMobileNav();
+        });
+
+        window.addEventListener('resize', () => {
+            syncMobileNavOffset();
+            if(window.innerWidth > 768){
+                closeMobileNav();
+            }
+        });
+    }
+
+    if(floatingBtn){
+        floatingBtn.addEventListener('click', () => {
+            window.location.href = 'Contact.html';
+        });
+    }
+
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorRing = document.querySelector('.cursor-ring');
+    const interactiveSelectors = 'a,button,.btn,input,textarea,select,[role="button"],.social-link';
+
+    if(cursorDot && cursorRing && window.matchMedia('(hover: hover) and (pointer: fine)').matches && window.innerWidth > 768){
+        document.addEventListener('mousemove', (event) => {
+            cursorDot.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`;
+            cursorRing.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`;
+        });
+
+        document.addEventListener('mousedown', () => document.body.classList.add('cursor-active'));
+        document.addEventListener('mouseup', () => document.body.classList.remove('cursor-active'));
+        document.addEventListener('mouseenter', () => document.body.classList.remove('cursor-hide'));
+        document.addEventListener('mouseleave', () => document.body.classList.add('cursor-hide'));
+
+        document.querySelectorAll(interactiveSelectors).forEach((element) => {
+            element.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+            element.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+        });
+    } else {
+        document.body.classList.add('cursor-hide');
+    }
+});
+</script>
 </body>
 </html>

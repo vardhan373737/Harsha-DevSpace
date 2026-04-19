@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -30,11 +30,15 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Kodiganti Harshavardhan resume preview">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:secure_url" content="https://www.harshadevspace.me/assets/social-preview.png">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Kodiganti Harshavardhan | Resume">
 <meta name="twitter:description" content="Resume and professional summary for Kodiganti Harshavardhan.">
 <meta name="twitter:image" content="https://www.harshadevspace.me/assets/social-preview.png">
+<meta name="twitter:creator" content="@vardhan373737">
+<meta name="twitter:site" content="@vardhan373737">
 
 <link rel="icon" type="image/jpeg" href="/profile.jpeg">
 <script type="application/ld+json">
@@ -89,6 +93,62 @@ html,body{
 body{
     background:#ffffff;
     padding:0;
+}
+
+.cursor-dot,
+.cursor-ring{
+    position:fixed;
+    top:0;
+    left:0;
+    pointer-events:none;
+    z-index:9999;
+    transform:translate3d(-50%,-50%,0);
+}
+
+.cursor-dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 18px rgba(168,118,53,0.35);
+}
+
+.cursor-ring{
+    width:34px;
+    height:34px;
+    border:1.5px solid rgba(168,118,53,0.62);
+    border-radius:50%;
+    transition:width 0.18s ease,height 0.18s ease,border-color 0.18s ease,opacity 0.18s ease,transform 0.06s linear;
+    opacity:0.85;
+}
+
+body.cursor-hover .cursor-ring{
+    width:48px;
+    height:48px;
+    border-color:rgba(168,118,53,0.9);
+}
+
+body.cursor-active .cursor-ring{
+    width:22px;
+    height:22px;
+    opacity:0.65;
+}
+
+body.cursor-hide .cursor-dot,
+body.cursor-hide .cursor-ring{
+    opacity:0;
+}
+
+a:focus-visible,
+@media (hover:none), (pointer:coarse), (max-width:768px){
+    .cursor-dot,
+    .cursor-ring{display:none !important;}
+}
+button:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:4px;
+    box-shadow:0 0 0 4px rgba(168,118,53,0.16);
+    border-radius:8px;
 }
 
 .resume{
@@ -244,11 +304,61 @@ a{
     text-decoration:none;
 }
 
+.page-footer{
+    margin-top:12px;
+    padding-top:10px;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+}
+
+.page-footer-copy{
+    font-size:9px;
+    color:var(--muted);
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+}
+
+.footer-socials{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.social-link{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    color:var(--ink);
+    border:1px solid var(--line);
+    background:var(--light-bg);
+    transition:transform 0.24s ease,background 0.24s ease,color 0.24s ease,box-shadow 0.24s ease;
+}
+
+.social-link:hover{
+    transform:translateY(-2px) scale(1.06);
+    background:var(--accent);
+    color:#fff;
+    box-shadow:0 8px 14px rgba(168,118,53,0.26);
+}
+
 @media print{
     body{
         background:#ffffff;
         padding:0;
         margin:0;
+    }
+
+    .cursor-dot,
+    .cursor-ring,
+    .page-footer{
+        display:none !important;
     }
     
     .resume{
@@ -266,10 +376,17 @@ a{
         width:100%;
         height:auto;
     }
+
+    .page-footer{
+        flex-direction:column;
+        align-items:flex-start;
+    }
 }
 </style>
 </head>
 <body>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
 <div class="resume">
     <div class="header">
         <h1 class="name">KODIGANTI HARSHAVARDHAN</h1>
@@ -324,7 +441,7 @@ a{
         <h2 class="section-title">Featured Projects</h2>
         
         <div class="project-item">
-            <span class="project-title">HomeEase – Modern Home Services Platform</span>
+            <span class="project-title">HomeEase â€“ Modern Home Services Platform</span>
             <div class="project-desc">
                 <ul>
                     <li>Engineered a responsive home services booking platform with clean UI/UX focused on seamless user experience.</li>
@@ -336,7 +453,7 @@ a{
         </div>
 
         <div class="project-item">
-            <span class="project-title">Chit Fund Management – Secure Financial Platform</span>
+            <span class="project-title">Chit Fund Management â€“ Secure Financial Platform</span>
             <div class="project-desc">
                 <ul>
                     <li>Developed a secure web platform for comprehensive chit fund member management and financial tracking.</li>
@@ -348,7 +465,7 @@ a{
         </div>
 
         <div class="project-item">
-            <span class="project-title">Premium Portfolio Website – Responsive Personal Brand</span>
+            <span class="project-title">Premium Portfolio Website â€“ Responsive Personal Brand</span>
             <div class="project-desc">
                 <ul>
                     <li>Built a modern, fully responsive portfolio website showcasing projects and technical expertise.</li>
@@ -360,7 +477,7 @@ a{
         </div>
 
         <div class="project-item">
-            <span class="project-title">AI Analyzer – Intelligent Analysis Platform</span>
+            <span class="project-title">AI Analyzer â€“ Intelligent Analysis Platform</span>
             <div class="project-desc">
                 <ul>
                     <li>Built an AI-powered analysis platform that evaluates inputs quickly and presents clear insights.</li>
@@ -374,9 +491,9 @@ a{
 
     <div class="section">
         <h2 class="section-title">Achievements & Highlights</h2>
-        <div class="skills-category">• 15+ Projects Built | 8+ Tech Stacks Used | 100% Project Delivery Focus</div>
-        <div class="skills-category">• Expertise in End-to-End Web Development from Design to Deployment</div>
-        <div class="skills-category">• Strong foundation in Data Structures, Algorithms, and Software Architecture Principles</div>
+        <div class="skills-category">- 15+ Projects Built | 8+ Tech Stacks Used | 100% Project Delivery Focus</div>
+        <div class="skills-category">- Expertise in End-to-End Web Development from Design to Deployment</div>
+        <div class="skills-category">- Strong foundation in Data Structures, Algorithms, and Software Architecture Principles</div>
     </div>
 
     <div class="section">
@@ -416,6 +533,42 @@ a{
         <div class="leadership-item"><span class="leadership-role">Technical Contributor:</span> Active open-source contributor and maintainer of personal development projects on GitHub.</div>
         <div class="leadership-item"><span class="leadership-role">Languages:</span> English (Fluent), Telugu (Native), Hindi (Conversational)</div>
     </div>
+
+    <footer class="page-footer" aria-label="Footer social links">
+        <div class="page-footer-copy">Harsha DevSpace Resume</div>
+        <div class="footer-socials">
+            <a class="social-link" href="https://github.com/vardhan373737" target="_blank" rel="noopener noreferrer" aria-label="GitHub">G</a>
+            <a class="social-link" href="https://www.linkedin.com/in/harsha-vardhan-7a91a32a0" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+            <a class="social-link" href="https://www.instagram.com/harsha.vardhan8824" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
+        </div>
+    </footer>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorRing = document.querySelector('.cursor-ring');
+    const interactiveSelectors = 'a,button,.social-link';
+
+    if(cursorDot && cursorRing && window.matchMedia('(hover: hover) and (pointer: fine)').matches && window.innerWidth > 768){
+        document.addEventListener('mousemove', (event) => {
+            cursorDot.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`;
+            cursorRing.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`;
+        });
+
+        document.addEventListener('mousedown', () => document.body.classList.add('cursor-active'));
+        document.addEventListener('mouseup', () => document.body.classList.remove('cursor-active'));
+        document.addEventListener('mouseenter', () => document.body.classList.remove('cursor-hide'));
+        document.addEventListener('mouseleave', () => document.body.classList.add('cursor-hide'));
+
+        document.querySelectorAll(interactiveSelectors).forEach((element) => {
+            element.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+            element.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+        });
+    } else {
+        document.body.classList.add('cursor-hide');
+    }
+});
+</script>
 </body>
 </html>
+
